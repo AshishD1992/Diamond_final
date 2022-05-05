@@ -1,0 +1,100 @@
+@import "src/change.scss";
+
+
+
+.tab .nav-tabs{
+    border-bottom:0 none;
+    margin-top: 2px;
+    // width: 155%;
+}
+.tab .nav-tabs li a {
+    font-size:14px;
+    color:#000 !important;
+    margin-right:0;
+    padding:5px 10px !important;
+    // border-radius:0;
+    overflow: hidden;
+    background: #f1f1f1 !important;
+    text-transform:uppercase;
+    // box-shadow: 8px 12px 25px 2px rgba(0, 0, 0, 0.4);
+    transition: all 0.4s ease 0s;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    // border-left: 1px solid #2c3e50 !important;
+}
+
+
+.tab .nav-tabs li a:hover,
+.tab .nav-tabs li.active a:hover,
+.tab .nav-tabs li.active a{
+    background: #2e4051 !important;
+    color: #fff !important;
+    // margin-top: -19px;
+    // padding:20px 45px;
+    // border:1px solid #545f60;
+    // border-right: 1px solid #2c3e50 !important;
+    // margin:0;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.35rem;
+}
+.tab .tab-content{
+    // color:#fff;
+    // padding: 25px 20px;
+    // background:#545f60;
+    border-radius: 0 0 8px 8px;
+    // box-shadow: 8px 12px 25px 2px rgba(0, 0, 0, 0.4);
+}
+@media only screen and (max-width: 650px){
+    .tab .nav-tabs li{ width:100%; }
+    .tab .nav-tabs li a{
+        margin:0;
+        padding:20px 45px;
+        box-shadow: -2px -1px 25px 2px rgba(0, 0, 0, 0.4);
+    }
+    .tab .nav-tabs li:first-child a,
+    .tab .nav-tabs li:last-child a{
+        border-radius: 0;
+    }
+   
+}
+
+a {
+   
+    text-decoration: auto;
+}
+.casino_odds {
+    padding: 5px;
+    margin-bottom: 7px;
+}
+
+.casino_odds {
+    background: rgba(0, 0, 0, .05);
+}
+.casino_odds .row {
+    border: none;
+}
+.casino_odds .row {
+    margin: 0;
+    border-bottom: 1px solid #fff;
+    align-items: center;
+}
+.back {
+    color: #fff!important;
+    background-image: linear-gradient(to right,var(--primary),var(--secondary))!important;
+    width: 100%!important;
+    border-radius: 4px!important;
+    box-shadow: 0 2px 2px 0 #00000024,0 3px 1px -2px #0000001f,0 1px 5px 0 #0003!important;
+    border: 0!important;
+    padding: 4px 10px!important;
+    cursor: pointer!important;
+    font-size: 16px!important;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.casino_odds .c-min-max {
+    display: flex;
+    justify-content: space-between;
+}

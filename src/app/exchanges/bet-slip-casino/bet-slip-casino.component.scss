@@ -1,0 +1,151 @@
+.bets-section {
+    border: none;
+}
+.bets-section h2 {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-bottom: 0;
+    margin-top: 2px;
+}
+.bets-section h2 {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 7px 1.25rem;
+    margin: 0;
+    font-size: 16px;
+    text-transform: capitalize;
+}
+.bets-section div {
+    font-size: 12px;
+    font-weight: 600;
+}
+.bets-section .back, .bets-section .lay {
+    padding: 5px;
+}
+.back, .back-color {
+    background-color: #72bbef !important;
+}
+.bets-section div {
+    font-size: 12px;
+    font-weight: 600;
+}
+.bets-section div {
+    font-size: 12px;
+    font-weight: 600;
+}
+.col {
+    flex: 1 0 0%;
+    position: relative;
+}
+.row>* {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-top: var(--bs-gutter-y);
+}
+.py-1 {
+    padding-top: 0.25rem!important;
+    padding-bottom: 0.25rem!important;
+}
+.text-danger {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-danger-rgb),var(--bs-text-opacity))!important;
+}
+.fa-close:before, .fa-multiply:before, .fa-remove:before, .fa-times:before, .fa-xmark:before {
+    content: "\f00d";
+}
+bets-section input {
+    height: 28px;
+    background: #fff;
+    border-radius: 0;
+}
+.form-control:disabled, .form-control[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+}
+.arrow-up  {
+    position: absolute;
+    top: -3px;
+    right: 2px;
+    text-align: center;
+}
+.arrow-down{
+    position: absolute;
+    top: 12px;
+    right: 0px;
+    
+    text-align: center;
+}
+.bets-section input {
+    height: 28px;
+    background: #fff;
+    border-radius: 0;
+}
+.arrow-down i, .arrow-up i {
+    padding: 0 5px;
+    color: #000;
+    background: #efefef;
+    font-size: 12px;
+}
+.fa-angle-up:before {
+    content: "\f106";
+}
+.stakes .btn-group {
+    width: 98%;
+}
+.btn-group, .btn-group-vertical {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+}
+.stakes .btn-group button {
+    text-align: center;
+    min-width: 16.5%;
+    display: flex;
+    width: 100%;
+    margin: 3px 1px;
+    padding: 2px;
+    justify-content: center;
+}
+
+
+.cancel-btn {
+    color: #fff !important;
+    background-color: #bd2130 !important;
+    border-color: #b21f2d !important;
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    border-radius: 0.2rem !important;
+    text-transform: capitalize;
+    float: left;
+}
+.btn {
+    border: none !important;
+}
+.betplace-btn {
+    color: #fff !important;
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    border-radius: 0.2rem !important;
+    text-transform: capitalize;
+    float: right;
+}
+.stakes button {
+    width: auto;
+    border: 0;
+    min-width: 19%;
+    margin-top: 2px;
+    float: left;
+    background-color: #ccc;
+    font-weight: normal;
+    margin-right: 3px;
+    color: #273a47;
+    border-radius: 0.25rem;
+    font-size: 14px;
+}

@@ -1,0 +1,55 @@
+@import "src/change.scss";
+.casinobetplace {
+    margin-bottom: 15px;
+}
+.casinobetplace .casino_odds:first-child {
+    background: #90ee90;
+}
+
+.casinobetplace .casino_odds:first-child {
+    border-bottom: none;
+}
+
+.casinobetplace .casino_odds {
+    padding: 10px 0;
+    border: 1px solid #000;
+}
+.casinobetplace .casino_odds:nth-child(2) {
+    background: #ffa07a;
+}
+.casino_odds .row {
+    margin: 0;
+    border-bottom: 0px solid #fff;
+    align-items: center;
+  
+}
+.casino_odds {
+    background: rgba(0, 0, 0, 0.05);
+    margin-bottom: 0px;
+    // margin-left: 12px;
+}
+
+.c_odds_title button, .c_odds_value button {
+    width: 100%;
+    background: none;
+    border: none;
+    margin-left: 78px;
+   
+    margin-right: -33px;
+    height: 37px;
+}
+.suspended {
+    position: absolute;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 80%;
+    right: -32px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 18px !important;
+    top: 0;
+}

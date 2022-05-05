@@ -1,0 +1,158 @@
+.betting-table {
+    margin: 10px 0;
+}
+.betting-table div {
+    padding: 0;
+}
+.back, .back-color {
+    background-color: #72bbef !important;
+}
+.betting-table div .row:first-child {
+    background: #ccc;
+    text-transform: capitalize;
+}
+.betting-table div .row {
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    padding: 6px 0;
+    padding-left: 0px;
+    color: #303030;
+    margin: 0;
+}
+.betting-table div {
+    padding: 0;
+}
+.align-items-center {
+    align-items: center!important;
+}
+.betting-table div .row:first-child .col {
+    font-size: 12px;
+}
+.betting-table div .row .col {
+    padding: 0 2px;
+    font-size: 14px;
+}
+.detail_screen .col-md-8, .detail_screen .col-md-4 {
+    padding: 0 3px;
+}
+.betting-table div .row {
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    padding: 6px 0;
+    padding-left: 0px;
+    color: #303030;
+    margin: 0;
+}
+.betting-table div {
+    padding: 0;
+}
+.align-items-center {
+    align-items: center!important;
+}
+.border-bottom {
+    border-bottom: 1px solid #dee2e6!important;
+}
+.betting-table div .row .col {
+    padding: 0 2px;
+    font-size: 14px;
+}
+.col {
+    flex: 1 0 0%;
+}
+.back span, .lay span {
+    display: block;
+    text-align: center;
+}
+.betting-table div .row input {
+    height: 24px;
+    background: #fff;
+    border-radius: 0;
+    border-color: #efefef;
+}
+.betting-table div input {
+    border: none;
+    box-shadow: inset 0px 0px 0 1px #ced4da;
+    text-align: center;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.form-control {
+    border: none;
+    border: 1px solid #ced4da !important;
+    border-radius: 0.25rem !important;
+}
+.betting-table .stakes {
+    padding: 0 3px;
+}
+.betting-table .stakes .btn-group {
+    display: inline-block;
+}
+.betting-table .stakes .btn-group {
+    width: 100%;
+}
+.betting-table div {
+    padding: 0;
+}
+.btn-group, .btn-group-vertical {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+}
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
+}
+.betting-table div .row {
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    padding: 6px 0;
+    padding-left: 0px;
+    color: #303030;
+    margin: 0;
+}
+.align-items-center {
+    align-items: center!important;
+}
+.betplace-btn {
+    color: #fff !important;
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    border-radius: 0.2rem !important;
+    text-transform: capitalize;
+    float: right;
+}
+
+.btn {
+    border: none !important;
+}
+.cancel-btn {
+    color: #fff !important;
+    background-color: #bd2130 !important;
+    border-color: #b21f2d !important;
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    border-radius: 0.2rem !important;
+    text-transform: capitalize;
+    float: left;
+}

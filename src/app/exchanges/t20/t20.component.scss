@@ -1,0 +1,11 @@
+@import "src/change.scss";
+
+.c_odds_title .back, .c_odds_value .back {
+    border-right: 1px solid #fff;
+}
+.c_odds_title .back {
+    width: 100%;
+}
+.border {
+    border: 0px solid #e2e2e2 !important;
+}

@@ -1,0 +1,13 @@
+@import "src/sport.scss";
+    
+
+    .ele{
+        margin-left: 225px;
+        margin-top: 12px;
+    }
+    @media (max-width: 767px){
+        .ele{
+            margin-left: 0px;
+            margin-top: 12px;
+        }
+    }

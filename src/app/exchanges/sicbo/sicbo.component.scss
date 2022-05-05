@@ -1,0 +1,215 @@
+@import "src/change.scss";
+.sicbo-table_footer {
+    display: flex;
+}
+.sicbo-table {
+    padding: 40px 10px 0;
+}
+.sicbo-table__body {
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+}
+
+.sicbo-table__body {
+    font-weight: 400;
+    font-family: Source Sans Pro,sans-serif;
+}
+.sicbo-table__body.even-big-column, .sicbo-table__body.small-odd-column{
+    width: 100%;
+}
+.sicbo-table__body-tr {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.sicbo-table__body-tr-header {
+    border-radius: 14px;
+    background: #1a2c6b;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #fff;
+}
+@media (max-width: 1600px){
+
+.sicbo-table div.sicbo-table__body .sicbo-table__body-column-header-text {
+    font-size: 11px;
+}
+}
+.sicbo-table__body-column-header-text {
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 19px;
+}
+.sicbo-table__body-td-wrapper{
+    display: flex;
+    flex-grow: 1;
+}
+
+@media (max-width: 1600px){
+
+.sicbo-table div.sicbo-table__body-td {
+    font-size: 26px;
+}
+}
+
+.sicbo-table__body-td.big-td, .sicbo-table__body-td.small-td {
+    width: 62%;
+}
+
+.sicbo-table__body-td {
+    font-size: 38px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.sicbo-table__body-td {
+    color: #000000cf;
+    background: #b5c2f0;
+    border-radius: 18px;
+    border: 1px solid #fff;
+    text-align: center;
+    padding: 8px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+@media (max-width: 1600px){
+
+.sicbo-table div.sicbo-table__body-td span {
+    font-size: 18px;
+}
+}
+.sicbo-table__body-td span {
+    font-size: 18px;
+    display: block;
+    
+    margin-top: 18px;
+
+}
+.sicbo-table p {
+    margin-bottom: 0;
+    display: block;
+}
+@media (max-width: 1600px)
+{
+.sicbo-table div.sicbo-table__body-td {
+    font-size: 26px;
+}
+}
+
+.sicbo-table__body-td.even-td, .sicbo-table__body-td.odd-td {
+    width: 38%;
+}
+.sicbo-table__body .vertical-text {
+    transform: rotate(-90deg);
+}
+.sicbo-table__body .dice-column {
+    width: 100%;
+    display: flex;
+}
+.sicbo-table__body-tr.first-dice-tr, .sicbo-table__body-tr.second-dice-tr {
+    width: 100%;
+    max-width: 227px;
+}
+
+
+.sicbo-table__body-td-wrapper.first-dice-td-wrapper, .sicbo-table__body-td-wrapper.second-dice-td-wrapper {
+    flex-direction: column;
+}
+
+
+
+@media (max-width: 1600px){
+
+.sicbo-table div.sicbo-table__body-td {
+    font-size: 26px;
+}
+}
+
+.sicbo-table__body-td {
+    font-size: 38px;
+    width: 100%;
+    cursor: pointer;
+}
+@media (max-width: 1600px)
+{
+.sicbo-table div.sicbo-table__body-dice-wrapper {
+    width: 20px;
+}
+}
+.sicbo-table__body-dice-wrapper {
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+}
+.sicbo-table__body-dice-wrapper .sicbo-table__body-dice-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+@media (max-width: 1600px)
+{
+.sicbo-table .sicbo-table_footer {
+    display: flex;
+}
+}
+@media (max-width: 1600px)
+{
+.sicbo-table .sicbo-table_footer .sicbo-table__body-td.footer-td {
+    font-size: 13px;
+}
+}
+.sicbo-table_footer .sicbo-table__body-td.footer-td {
+    font-size: 18px;
+    padding: 18px 7px;
+}
+@media (max-width: 1600px)
+{
+.sicbo-table .sicbo-table_footer .sicbo-table__body-td.footer-td span {
+    font-size: 8px;
+}
+}
+
+
+.resultText .result-box.light-color {
+    background-color: #50a7ff;
+}
+
+.resultText .result-box {
+    border-radius: 7px;
+    background-color: #18f;
+    margin: 1px 2px;
+}
+.resultText {
+    width: 32px;
+    height: auto;
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    border-radius: 7px;
+}
+
+.casino-result-c {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sicbo-live-result-block__image--left {
+    transform: rotate(-15deg);
+    margin-top: 15px;
+}
+
+.sicbo-live-result-block__image {
+    width: 45px;
+    border: 2px solid #fff;
+    box-sizing: border-box;
+    box-shadow: -1px 1px 15px 4px #ffffff4d;
+    border-radius: 10px;
+}
+.casino-result-c img {
+    margin: 0 5px;
+}

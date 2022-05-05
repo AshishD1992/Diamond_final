@@ -1,0 +1,23 @@
+@import "src/change.scss";
+@media (min-width: 1200px){
+.h3, h3 {
+    font-size: 1.75rem;
+}
+}
+blockquote {
+    margin: 0 0 1rem;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+ .panel-heading {
+    background-color: blue;
+    color: #fff;
+  }
+  .btn-link {
+    font-weight: 400;
+    color: #0d6efd;
+    text-decoration: auto;
+}
+

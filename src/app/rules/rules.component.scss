@@ -1,0 +1,239 @@
+.ruser-title {
+    border-radius: 0;
+    margin: 10px 0;
+    font-size: 1.5rem;
+    background: #0088cc;
+    color: #fff;
+    text-transform: capitalize;
+    padding: 0.4rem 1.25rem;
+    font-weight: 500;
+    align-items: center;
+    display: flex;
+}
+.header-bottom, .rules-page .card-title, .detail_screen .event-title, .user-title, .desktop, .ruser-title, .user_screen thead th, .listing_screen ul li a.active, .listing_screen ul li a:hover, .betting-table h2.mrkname, .detail_screen .listing_screen ul li a, .bets-section h2, .games-tabsList .nav .nav-list, .casino-video-title {
+    background: #2c3e50 !important;
+}
+.col-md-10{
+    margin-left: 225px;
+    margin-top: 12px;
+}
+
+.tabordion {
+    color: #333;
+    display: block;
+    font-family: arial, sans-serif;
+    margin: auto;
+    position: relative;
+    width: 80%;
+  }
+  
+  .tabordion input[name="sections"] {
+    left: -9999px;
+    position: absolute;
+    top: -9999px;
+  }
+  
+  .tabordion section {
+    display: block;
+  }
+  
+  .tabordion section label {
+    background: var(--primary) !important;
+    border-radius: 0 !important;
+    border-bottom: 2px solid #ddd !important;
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    // border:1px solid #fff;
+    cursor: pointer;
+   
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 0.1rem;
+    position: relative;
+    width: 251px;
+    z-index:100;
+  }
+  
+  .tabordion section article {
+    display: none;
+    left: 230px;
+    min-width: 300px;
+    padding: 0 0 0 21px;
+    position: absolute;  
+    top: 0;
+  }
+  
+  .tabordion section article:after {
+    // background-color: #ccc;
+    bottom: 0;
+    content: "";
+    display: block;
+    left:-229px;
+    position: absolute;
+    top: 0;
+    width: 220px;
+    z-index:1;
+  }
+  
+  .tabordion input[name="sections"]:checked + label { 
+    background: var(--primary) !important;
+    border-radius: 0 !important;
+    border-bottom: 2px solid #ddd !important;
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #fff;
+}
+
+
+  
+  
+  .tabordion input[name="sections"]:checked ~ article {
+    display: block;
+  }
+  
+  
+  @media (max-width: 533px) {
+    
+    h1 {
+      width: 100%;
+    }
+  
+    .tabordion {
+      width: 100%;
+    }
+    
+    .tabordion section label {
+      font-size: 1em;
+      width: 160px;
+    }  
+  
+   .tabordion section article {
+      left: 200px;
+      min-width: 270px;
+    } 
+    
+    .tabordion section article:after {
+      background-color: #ccc;
+      bottom: 0;
+      content: "";
+      display: block;
+      left:-199px;
+      position: absolute;
+      top: 0;
+      width: 200px;
+  
+    }  
+    
+  }
+  
+  
+  @media (max-width: 768px) {
+    h1 {
+      width: 96%;
+    }
+  
+    .tabordion {
+      width: 96%;
+      display: none;
+    }
+  }
+  
+  
+  @media (min-width: 1366px) {
+    h1 {
+      width: 70%;
+    }
+  
+    .tabordion {
+      width: 100%;
+    }
+  }
+  
+
+.card-title {
+  padding: 5.3px 10px;
+  color: #fff;
+  background: #2c3e50 !important;
+  margin-bottom: 0.5rem;
+}
+.card-body {
+    flex: 1 1 auto;
+    padding: 1rem;
+  }
+   .rules-description {
+    padding: 0;
+    width: 52.6rem;
+}
+ 
+
+@media (max-width: 991px){
+  .rules_mobile {
+      display: block;
+  }
+  }
+  .rules_mobile .accordion-item {
+    border: none;
+}
+.accordion-item:first-of-type {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+.accordion-item {
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+}
+.accordion-header {
+  margin-bottom: 0;
+}
+.accordion-button {
+  background: #2c3e50;
+  color: #fff;
+  border-radius: 0;
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+}
+.accordion-button:hover {
+  z-index: 2;
+}
+.collapse:not(.show) {
+  display: none;
+}
+.rules_mobile {
+  margin: 10px 5px;
+  width: 32rem;
+  display: none;
+}
+
+@media (max-width: 991px){
+  .rules_mobile {
+  margin: 10px 5px;
+  width: 32rem;
+  display: block;
+}
+}
+
+@media (max-width: 991px){
+.ruser-title {
+    margin: 0;
+    width: 32rem;
+    
+}
+}
+@media (max-width: 991px){
+  .col-md-10{
+    margin-left: -11px;
+    margin-top: 1px;
+}
+}
+@media (max-width: 991px){
+  .tabordion {
+    color: #333;
+    display: none;
+    font-family: arial, sans-serif;
+    margin: auto;
+    position: relative;
+    width: 80%;
+}
+}
+  

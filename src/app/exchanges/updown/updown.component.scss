@@ -1,0 +1,58 @@
+@import "src/change.scss";
+
+// .right-sidebar.casino-right-sidebar {
+//     width: 384px;
+//     background-color: #fff;
+//     padding: 0;
+//     transform: translate3d(0px, -804px, 0px);
+//     padding-left: 4px;
+//     margin-left: 956px;
+// }
+
+
+
+.back {
+    color: #fff!important;
+    background-image: linear-gradient(to right,var(--primary),var(--secondary))!important;
+    width: 100%!important;
+    border-radius: 4px!important;
+    box-shadow: 0 2px 2px 0 #00000024,0 3px 1px -2px #0000001f,0 1px 5px 0 #0003!important;
+    border: 0!important;
+    padding: 4px 10px!important;
+    cursor: pointer!important;
+    font-size: 16px!important;
+    position: relative;
+    height: 28px;
+}
+.casino_odds img {
+    width: 40px;
+}
+// .back7 {
+//     display: flex;
+//     margin: 0 auto;
+//     justify-content: center;
+// }
+
+.casino_odds .row {
+    margin: 0;
+    border-bottom: 0px solid #fff;
+    align-items: center;
+}
+@media (min-width: 768px){
+    .col-md-12 {
+        flex: 0 0 auto;
+        width: 98.3%;
+    }
+    }
+    .casino_odds{
+      
+        margin-left: 11px;
+    }
+    @media (min-width: 768px){
+    .col-md-6 {
+        flex: 0 0 auto;
+        width: 49%;
+    }
+    }
+
+

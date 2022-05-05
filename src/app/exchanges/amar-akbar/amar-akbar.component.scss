@@ -1,0 +1,38 @@
+@import "src/change.scss";
+
+
+.casino_odds {
+    padding: 10px;
+    margin-bottom: 7px;
+}
+.casino_odds .row {
+    border: none;
+}
+.btn-group {
+    display: block;
+}
+.back-extra {
+    color: #fff!important;
+    background-image: linear-gradient(to right,var(--primary),var(--secondary))!important;
+    width: 100%!important;
+    border-radius: 4px!important;
+    box-shadow: 0 2px 2px 0 #00000024,0 3px 1px -2px #0000001f,0 1px 5px 0 #0003!important;
+    border: 0!important;
+    padding: 4px 10px!important;
+    cursor: pointer!important;
+    font-size: 16px!important;
+    position: relative;
+}
+.back7{
+    // display: flex;
+    margin: 0 auto;
+    justify-content: center;
+}
+// .row{
+//     width: 100%;
+//     margin-left: 0px;
+// }
+.casino-detail{
+    width: 97%;
+    margin-left: 12px;
+}

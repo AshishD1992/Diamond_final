@@ -1,0 +1,35 @@
+#footer {
+    line-height: 1.5;
+    position: relative;
+    background-color: #0088cc;
+    border-top: 2px solid #2c3e50;
+    color: #fff;
+    // margin-top: 625px;
+}
+@media (max-width: 767px){
+    #footer{
+        line-height: 1.5;
+        position: relative;
+        background-color: #0088cc;
+        border-top: 2px solid #2c3e50;
+        color: #fff;
+        display: none;
+    }
+}
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+    display: block;
+}
+#footer p, #footer a {
+    color: #fff;
+    margin: 0;
+    font-size: 16px;
+}
+.text-center {
+    text-align: center!important;
+}
+#footer p, #footer a {
+    color: #fff;
+    margin: 0;
+    font-size: 16px;
+}
