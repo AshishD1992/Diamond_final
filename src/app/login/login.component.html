@@ -28,7 +28,7 @@
 
 
 
-  <div class="login">
+<div class="login">
     <div class="wrapper">
       <div class="container-fluid">
         <div class="row">
@@ -38,18 +38,24 @@
                 <img src="https://dzm0kbaskt4pv.cloudfront.net/v2/static/themes/diamondexch9.com/front/logo.png" class="logo-login"></div>
                 <div class="featured-box-login featured-box-secundary default">
                   <h4 class="text-center"> LOGIN<i class="fa fa-hand-o-down" style="font-size:24px"></i></h4>
-                  <form novalidate="" role="form" autocomplete="off" class="ng-untouched ng-pristine ng-invalid">
+                  <form   [ FormGroup]="LoginForm" (ngSubmit)="login()">
                     <div class="form-group m-b-20">
-                      <input name="User Name" placeholder="User Name" formcontrolname="username" type="text" aria-required="true" aria-invalid="true" class="form-control ng-untouched ng-pristine ng-invalid">
-                      <i class="fa fa-user"></i><!---->
+                      <input name="username" placeholder="username" formcontrolname="Username" type="text" aria-required="true" aria-invalid="true" class="form-control">
+                      <i class="fa fa-user"></i>
                     </div>
+                  
+                      <div *ngIf="f.Username.errors.required">Username is required</div>
+                 
                     <div class="form-group m-b-20">
-                      <input name="Password" placeholder="Password" type="password" formcontrolname="password" aria-required="true" aria-invalid="true" class="form-control ng-untouched ng-pristine ng-invalid">
+                      <input name="Password" placeholder="Password" type="password" formcontrolname="password"  class="form-control">
                       <i class="fa fa-key"></i>
-                      <!----></div>
+                     </div>
+                     <div  *ngIf="f. password.invalid && f. password.touched">
+                      password is required
+                    </div>
                       <div class="form-group text-center mb-0">
-                        <button type="submit" class="btn btn-submit btn-login"> Login <i class="ml-2 fa fa-sign-in-alt"></i>
-                          <!----><!---->
+                        <button type="submit" class="btn btn-submit btn-login" [disabled]="!LoginForm.valid"> Login <i class="ml-2 fa fa-sign-in-alt"></i>
+                        
                         </button>
                       </div>
                       <small class="recaptchaTerms"> This site is protected by reCAPTCHA and the Google <a href="javascript:void(0)"> Privacy Policy</a> and 
@@ -61,4 +67,4 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> 

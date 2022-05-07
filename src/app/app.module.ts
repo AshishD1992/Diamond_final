@@ -26,7 +26,7 @@ import { TabsModule, TabsetConfig } from 'ngx-bootstrap/tabs';
 import { FootballComponent } from './sports/football/football.component';
 import { TennisComponent } from './sports/tennis/tennis.component';
 import { ElectionComponent } from './sports/election/election.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +57,7 @@ import { ElectionComponent } from './sports/election/election.component';
     BsDatepickerModule.forRoot(),
     AccordionModule.forRoot(),
     BrowserAnimationsModule,
+    ReactiveFormsModule,
 
     CommonModule,
     // SharedModule,

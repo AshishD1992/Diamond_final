@@ -1,28 +1,39 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
+import { LoginService } from '../services/login.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { TokenService } from '../services/token.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginForm!: FormGroup;
+  LoginForm!: FormGroup;
   isSubmitted  =  false;
-  formBuilder: any;
-  constructor() { }
+ 
+  constructor( private loginService: LoginService,
+    private tokenService: TokenService,
+    private toastr: ToastrService,
+    private fb: FormBuilder,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.loginForm  =  this.formBuilder.group({
-      email: ['', Validators.required],
+    this. LoginForm  =  this.fb.group({
+      context: ['Web',Validators.required],
+      Username: ['', Validators.required],
       password: ['', Validators.required]
   });
   }
-  get formControls() { return this.loginForm.controls; }
+  get f() 
+  { return this. LoginForm.controls; }
 
   login(){
-    console.log(this.loginForm.value);
+    console.log(this. LoginForm.value);
     this.isSubmitted = true;
-    if(this.loginForm.invalid){
+    if(this. LoginForm.invalid){
       return;
     }
     // this.authService.login(this.loginForm.value);

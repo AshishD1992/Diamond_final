@@ -17,6 +17,7 @@ import { ElectionComponent } from './sports/election/election.component';
 const routes: Routes = [
 
 
+
   {path:'login', component:  LoginComponent,},
   {path:'', component: HomeComponent,},
 
