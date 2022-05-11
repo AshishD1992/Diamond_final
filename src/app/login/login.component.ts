@@ -67,7 +67,7 @@ GetIpAddrress() {
         }
 
         // this.tokenService.setType(resp.type);
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['']);
       }
       else {
         this.toastr.error(resp.description.result);
