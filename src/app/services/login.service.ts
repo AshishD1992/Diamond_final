@@ -6,5 +6,14 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  Login(data: any): Observable<any> {
+    return this.http.post(`http://www.t20exchanges247.com/SportsClient/SportsClient.svc/Login`, data)
+  }
+
+  GetIpAddrress():Observable<any>{
+    return this.http.get(`https://api.ipify.org?format=json`);
+  }
+
 }

@@ -87,36 +87,35 @@
                 <img src="https://dzm0kbaskt4pv.cloudfront.net/v2/static/themes/diamondexch9.com/front/logo.png" class="logo-login"></div>
                 <div class="featured-box-login featured-box-secundary default">
                   <h4 class="text-center"> LOGIN<i class="fa fa-hand-o-down" style="font-size:24px"></i></h4>
-                  <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
-                    <div class="form-group m-b-20">
-                      <input name="username" placeholder="username" formcontrolname="username" type="text" aria-required="true" aria-invalid="true" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.  user.errors }"  id="inputUser4">
-                      <i class="fa fa-user"></i>
-                      <div *ngIf="submitted && f.  user.errors" class="invalid-feedback">
-                            <div *ngIf="f.  user.errors.required"> Username is required</div>
-                            <!-- <div *ngIf="f.  user.errors.  user">Email must be a valid email address</div> -->
-                         </div>
-                          <!-- <label for="floatingInput">Email address</label> -->
-                    </div>
-                  
-                   
-                 
-                    <div class="form-group m-b-20">
-                      <input name="Password" placeholder="Password" type="password" formcontrolname="password"  class="form-control"[ngClass]="{ 'is-invalid': submitted && f.password.errors }" id="inputPassword4">
-                      <i class="fa fa-key"></i>
-                     
-                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                            <div *ngIf="f.password.errors.required">Password is required</div>
-                         </div>
-                         </div>
-                          <!-- <label for="floatingPassword">Password</label> -->
-                      <div class="form-group text-center mb-0">
-                        <button type="submit" class="btn btn-submit btn-login"  > Login <i class="ml-2 fa fa-sign-in-alt"></i>
-                        
-                        </button>
+                  <form [formGroup]="LoginForm" (ngSubmit)="Login()">
+                    <div>
+                      <label> Username</label>
+                      <div class="linput">
+                        <input type="text" name="username" class="form-control" placeholder="Username" formControlName="username">
+                        <i class="icon team"></i>
                       </div>
-                      <small class="recaptchaTerms"> This site is protected by reCAPTCHA and the Google <a href="javascript:void(0)"> Privacy Policy</a> and 
-                        <a href="javascript:void(0)"> Terms of Service</a> apply. </small>
-                      </form>  
+                      <div class="text-warning" *ngIf="f.username.invalid && f.username.touched">
+                        Username is required
+                      </div>
+                    </div>
+                    <div>
+                      <label> Password</label>
+                      <div class="linput">
+                        <input type="password" name="password" class="form-control" placeholder="Password" formControlName="pwd">
+                        <i class="icon password"></i>
+                      </div>
+                      <div class="text-warning" *ngIf="f.pwd.invalid && f.pwd.touched">
+                        Password is required
+                      </div>
+                    </div>
+                    <div class="checkbox">
+                      <label><input type="checkbox" name="remember" id="remember"> Remember me</label>
+                    </div>
+                    <div>
+                      <button type="submit" class="btn btn-default submit" [disabled]="!LoginForm.valid">Log in</button>
+                    </div>
+                    <div class="clearfix"></div>
+                  </form>  
                    
                    
                       <!-- <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">

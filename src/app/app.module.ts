@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +27,12 @@ import { FootballComponent } from './sports/football/football.component';
 import { TennisComponent } from './sports/tennis/tennis.component';
 import { ElectionComponent } from './sports/election/election.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
+import { LoginService } from './services/login.service';
+import { TokenService } from './services/token.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,17 +64,31 @@ import { ReactiveFormsModule } from '@angular/forms';
     AccordionModule.forRoot(),
     BrowserAnimationsModule,
     ReactiveFormsModule,
-
+    HttpClientModule,
     CommonModule,
     // SharedModule,
     TabsModule,
-
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+      tapToDismiss: true
+    }),
     BsDatepickerModule.forRoot()
 
   ],
 
 
-  providers: [TabsetConfig],
+  providers: [
+    CookieService,
+    LoginService,
+    TokenService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    },
+    Title
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
