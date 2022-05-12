@@ -24,10 +24,11 @@ export class TokenInterceptorService implements HttpInterceptor  {
     const headersConfig = {
       // "Content-Type": "appliaction/json"
       // "Accept": "application/json"
+      Token:''
     };
     const authToken = this.tokenService.getToken();
     if (authToken && req.url.indexOf('https://ips.betfair.com') < 0 && req.url.indexOf('https://api.ipify.org') < 0) {
-      // headersConfig["Token"] = authToken;
+      headersConfig["Token"] = authToken;
     }
     const _req = req.clone({ setHeaders: headersConfig });
     return next
