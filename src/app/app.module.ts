@@ -33,6 +33,7 @@ import { TokenService } from './services/token.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { ToastrModule } from 'ngx-toastr';
+import { DataTablesModule } from 'angular-datatables';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,6 +74,7 @@ import { ToastrModule } from 'ngx-toastr';
       preventDuplicates: true,
       tapToDismiss: true
     }),
+    DataTablesModule,
     BsDatepickerModule.forRoot()
 
   ],
