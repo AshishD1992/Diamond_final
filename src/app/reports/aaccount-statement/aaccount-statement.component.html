@@ -1,31 +1,16 @@
-
-
-
-
-
 <div  class="wrapper-inner user_screen"><h2  class="user-title">account statement</h2>
     <div class="border border-light">
 <div class="filter m-2"><div class="form-row align-items-center">
-    <!-- <div class="col-md-3 col-lg-2 col-6">
-        <input type="text" name="from" placeholder="Datepicker" bsdatepicker="" class="form-control ng-untouched ng-pristine ng-valid"></div>
-      
-        <div class="col-md-3 col-lg-2 col-6">
-            <input type="text" name="to" placeholder="Datepicker" bsdatepicker="" class="form-control ng-untouched ng-pristine ng-valid"></div> -->
-
-
-            <!-- <div class="container">
-                <div class="row"> -->
+   
                   <div class="col-xs-12 col-12 col-md-4 form-group">
-                    <input type="text" name="from"
-                          placeholder="Datepicker"
-                          class="form-control"
-                          bsDatepicker>
+                    <input type="text" name="fdate" id="fdate" value="2019-08-01" class="form-control"
+                        placeholder="From Date" autocomplete="off" bsDatepicker [(ngModel)]="selectfromdate"
+                        [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY HH:mm:ss', containerClass: 'theme-default', isAnimated: true }">
                   </div>
                   <div class="col-xs-12 col-12 col-md-4 form-group">
-                    <input type="text" name="to"
-                          placeholder="Daterangepicker"
-                          class="form-control"
-                          bsDaterangepicker>
+                    <input type="text" name="tdate" id="tdate" value="2020-08-05" class="form-control"
+                        placeholder="To Date" autocomplete="off" bsDatepicker [(ngModel)]="selecttodate"
+                        [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY HH:mm:ss', containerClass: 'theme-default', isAnimated: true }">
                   </div>
                 <!-- </div>
               </div>            -->
@@ -34,14 +19,16 @@
                     <option value="transfer">Deposit/Withdraw Report</option>
                     <option value="settle">Game Report</option></select></div>
                     <div class="col-md-3 col-lg-1 col-12">
-                        <button type="button" class="btn btn-primary btn-block" style=" margin-top: -12px;">submit</button></div>
+                        <button type="button" class="btn btn-primary btn-block" id="frmsbmt" style=" margin-top: -12px;"  [disabled]="loader"
+                        (click)="AccountStatement()">submit</button></div>
                     </div></div>
 
 
 
-                    <div class="table-responsive">
-                        <table id="btDataTable" class="table table-bordered btDataTable table-striped table-bordered" style="width: 100%;">
-                            <thead><tr>
+                    <div class="table-responsive" id="filterdata">
+                        <table id="btDataTable" class="table table-bordered btDataTable table-striped table-bordered" datatable
+                        [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" style="width: 100%;">
+                            <thead><tr class="headings">
                                 <th class="text-center">date</th>
                                 <th class="text-right">Credit</th>
                                 <th class="text-right">Debit</th>
@@ -50,27 +37,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="text-center">2022-02-27 10:02:00</td>
-                                <td class="green text-right"></td><!---->
-                                <td class="text-right red">-1</td><!---->
-                                <td class="text-right green"> 3</td>
+                            <tr *ngFor="let statement of statementsData | reverse;let index=index">
+                                <td class="text-center">{{statement.date}}</td>
+                                <td class="green text-right">{{statement.cr}} </td>
+                                <td class="red text-right">{{statement.dr}} </td>
+                                <td class="green text-right">{{statement.balance | number:'1.2-2'}} </td>
                                 <td class="text-center">
-                                    <a href="/reports/account-statement-details/1.195306134">Nadal v Norrie</a></td></tr>
-                           <tr>
-                               <td class="text-center">2022-02-20 05:02:00</td>
-                                <td class="green text-right"></td><!---->
-                                <td class="text-right red">-4</td><!---->
-                                <td class="text-right green"> 4</td>
-                                <td class="text-center">
-                                    <a href="/reports/account-statement-details/1.194916203">Estudiantes v Lanus</a>
-                                </td></tr>
+                                    <a *ngIf="statement.type=='P|L Market'" title="show bet"
+                                    [routerLink]="['/profit-loss',statement.matchId,statement.mktId,statement.mktType,statement.tpRoundId]">
+                                    {{statement.description}}
+                                </a>
+                                <ng-container *ngIf="statement.type!='P|L Market'">
+                                    {{statement.description}}
+                                </ng-container></td></tr>
+                          
                                    
-                                </tbody><!----><!----><!---->
+                                </tbody>
                                 </table>
                                 </div>
 
 </div>
 </div>
-
-

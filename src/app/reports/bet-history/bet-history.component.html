@@ -8,33 +8,38 @@
  <div class="filter m-2">
   <div class="form-row align-items-center">
     <div class="col-xs-12 col-12 col-md-4 form-group">
-        <input type="text" name="from"
-              placeholder="Datepicker"
-              class="form-control"
-              bsDatepicker>
+      
+    <input type="text" name="fdate" id="fdate" value="2019-08-01" class="form-control"
+        placeholder="From Date" autocomplete="off" bsDatepicker [(ngModel)]="selectfromdate"
+        [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY HH:mm:ss', containerClass: 'theme-default', isAnimated: true }">
       </div>
       <div class="col-xs-12 col-12 col-md-4 form-group">
-        <input type="text" name="to"
-              placeholder="Daterangepicker"
-              class="form-control"
-              bsDaterangepicker>
+       
+        <input type="text" name="tdate" id="tdate" value="2020-08-05" class="form-control"
+            placeholder="To Date" autocomplete="off" bsDatepicker [(ngModel)]="selecttodate"
+            [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY HH:mm:ss', containerClass: 'theme-default', isAnimated: true }">
       </div>
+
 <div class="col-md-2 col-12">
-    <select name="reportType" class="custom-select ng-untouched ng-pristine ng-valid" style=" margin-top: -12px;">
+    <select  [(ngModel)]="betstatus" name="reportType" class="custom-select ng-untouched ng-pristine ng-valid" style=" margin-top: -12px;">
         <option value="">All</option>
         <option value="4">Cricket</option>
         <option value="1">Football</option>
         <option value="2">Tennis</option>
         <option value="1444001">Exchange Game</option>
-        <!----></select>
+       </select>
     </div>
+
 <div class="col-md-2 col-lg-1 col-12">
-    <button type="button" class="btn btn-primary btn-block" style=" margin-top: -12px;">submit</button>
+    <button type="button" class="btn btn-primary btn-block" style=" margin-top: -12px;" [disabled]="loader"
+    (click)="GetBetHistory()">submit</button>
 </div>
 </div>
 </div>
-<div class="table-responsive">
-<table id="btDataTable" class="table table-bordered btDataTable table-striped table-bordered" style="width: 120%;">
+
+
+<div class="table-responsive"  *ngIf="historyData">
+<table id="btDataTable" class="table table-bordered btDataTable table-striped table-bordered" style="width: 120%;" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
 <thead>
     <tr>
 <th class="text-center">Bet ID</th>
@@ -51,45 +56,21 @@
 </tr>
 </thead>
 <tbody>
-<tr class="lay">
-<td class="text-center">2203201835518973</td>
+<tr class="lay" *ngFor="let item of historyData; index as i;">
+<td class="text-center">{{item.betId}}</td>
 <td class="text-center">South Africa v Bangladesh</td>
-<td class="text-center">Cricket</td>
-<td class="text-center">MATCH_ODDS</td>
-<td class="text-center">South Africa</td>
-<td class="text-center">Lay</td>
-<td class="text-center">1.01</td>
-<td class="text-center">300</td>
-<td class="text-center red"> -3</td>
-<td class="text-center">2022-03-20 18:03:00</td>
-<td class="text-center">2022-03-20 20:03:00</td>
+<td class="text-center">cricket</td>
+<td class="text-center">{{item.description}}</td>
+<td class="text-center">{{item.selection}}</td>
+<td class="text-center">{{item.type}</td>
+<td class="text-center">{{item.odds}}</td>
+<td class="text-center">{{item.stake}}</td>
+<td class="text-center red"> {{item.pNl}}</td>
+<td class="text-center">{{item.date}}</td>
+<td class="text-center">{{item.date}}</td>
 </tr>
-<tr class="back">
-<td class="text-center">2202271012462739</td>
-<td class="text-center">Nadal v Norrie</td>
-<td class="text-center">Tennis</td>
-<td class="text-center">MATCH_ODDS</td>
-<td class="text-center">Rafael Nadal</td>
-<td class="text-center">Back</td>
-<td class="text-center">1.03</td>
-<td class="text-center">100</td>
-<td class="text-center green"> 3</td>
-<td class="text-center">2022-02-27 10:02:00</td>
-<td class="text-center">2022-02-27 10:02:00</td>
-</tr>
-<tr class="lay">
-    <td class="text-center">2202271012362844</td>
-    <td class="text-center">Nadal v Norrie</td>
-    <td class="text-center">Tennis</td>
-    <td class="text-center">MATCH_ODDS</td>
-    <td class="text-center">Rafael Nadal</td>
-    <td class="text-center">Lay</td>
-    <td class="text-center">1.04</td>
-    <td class="text-center">100</td>
-    <td class="text-center red"> -4</td>
-    <td class="text-center">2022-02-27 10:02:00</td>
-    <td class="text-center">2022-02-27 10:02:00</td>
-</tr><!---->
+
+
 </tbody>
 </table>
 </div>

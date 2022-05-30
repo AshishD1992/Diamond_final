@@ -1,15 +1,19 @@
-import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy,Pipe, PipeTransform } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ReportService } from 'src/app/report.service';
-import { DataTableDirective } from 'angular-datatables';
+
 import { Subject } from 'rxjs';
+import { DataTableDirective } from 'angular-datatables';
 // import _ from 'lodash';
+import * as _ from 'lodash';  
+
 
 @Component({
   selector: 'app-aaccount-statement',
   templateUrl: './aaccount-statement.component.html',
   styleUrls: ['./aaccount-statement.component.scss']
 })
+
 export class AaccountStatementComponent implements OnInit,AfterViewInit {
 
   selectfromdate!: Date;

@@ -6,13 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root'
 })
 export class LoginService {
-  changePwd(value: any) {
-    throw new Error('Method not implemented.');
-  }
-  getUserProfile: any;
-  getUserProflie() {
-    throw new Error('Method not implemented.');
-  }
+ 
 
   constructor(private http: HttpClient,private cookie: CookieService) { }
 

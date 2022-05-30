@@ -8,6 +8,10 @@ import { UnsettledBetComponent } from './unsettled-bet/unsettled-bet.component';
 import {  BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { SharedModule } from '../shared.module';
 import { ReportsComponent } from './reports.component';
+import { FormsModule } from '@angular/forms'; 
+import { DataTablesModule } from 'angular-datatables';
+import { ReversePipe } from '../pipes/reverse.pipe';
+
 
 const routes: Routes = [
   {
@@ -27,7 +31,9 @@ const routes: Routes = [
     ProfitLossComponent,
     BetHistoryComponent,
     UnsettledBetComponent,
-    ReportsComponent
+    ReportsComponent,
+    ReversePipe
+    
   ],
     imports: [
       
@@ -35,6 +41,8 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         BsDatepickerModule.forRoot(),
         SharedModule,
+        FormsModule,
+        DataTablesModule
      
       ],
       exports: [RouterModule],

@@ -34,6 +34,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { ToastrModule } from 'ngx-toastr';
 import { DataTablesModule } from 'angular-datatables';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,8 +55,9 @@ import { DataTablesModule } from 'angular-datatables';
           CricketComponent,
           FootballComponent,
           TennisComponent,
-          ElectionComponent 
-
+          ElectionComponent ,
+          
+          
 
 
   ],
@@ -66,7 +69,7 @@ import { DataTablesModule } from 'angular-datatables';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CommonModule,
+    CommonModule,    
     // SharedModule,
     TabsModule,
     ToastrModule.forRoot({
@@ -75,8 +78,8 @@ import { DataTablesModule } from 'angular-datatables';
       tapToDismiss: true
     }),
     DataTablesModule,
-    BsDatepickerModule.forRoot()
-
+    BsDatepickerModule.forRoot(),
+    
   ],
 
 
