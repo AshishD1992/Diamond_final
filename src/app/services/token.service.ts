@@ -1,6 +1,7 @@
 import { EventEmitter,Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,14 @@ export class TokenService {
 
   isLoggedInChange = new EventEmitter<boolean>();
 
-  constructor(private cookieService: CookieService, private router: Router) { }
+  private _isLoggedInSub = new BehaviorSubject<boolean>(false);
+  public isLoggedIn$ = this._isLoggedInSub.asObservable();
+
+  constructor(private cookieService: CookieService, private router: Router) {
+    if (this.isLoggedIn()) {
+      this.setLoggedIn(true);
+    }
+   }
 
   setToken(token: string) {
     this.cookieService.set('AuthToken', token);
@@ -50,6 +58,16 @@ export class TokenService {
   }
   removeTC() {
     this.cookieService.delete('tc');
+  }
+
+  isLoggedIn() {
+    let authToken = this.cookieService.get('AuthToken');
+    return this.cookieService.get('AuthToken') && authToken !== '';
+  }
+  setLoggedIn(isLoggedIn: boolean) {
+    if (this._isLoggedInSub.getValue() !== isLoggedIn) {
+      this._isLoggedInSub.next(isLoggedIn);
+    }
   }
 
   loggedOut() {
