@@ -17,16 +17,11 @@
     <div class="panel" id="one-panel">
         <div class="tab-wrap">
             <ul class="tab-list">
-              <li class="in"><a href="javascript:;"><span>Cricket</span></a></li>
-              <li><a href="javascript:;"><span>Football</span></a></li>
-              <li><a href="javascript:;"><span>Tennis</span></a></li>
-              <li><a href="javascript:;"><span>Election</span></a></li>
-              <li><a href="javascript:;"><span>Teenpatti</span></a></li>
-              <li><a href="javascript:;"><span>Roulette</span></a></li>
-              <li><a href="javascript:;"><span>7 Up & Down</span></a></li>
-              <li><a href="javascript:;"><span>32 Card Casino</span></a></li>
-              <li><a href="javascript:;"><span>Sicbo</span></a></li>
-              <li><a href="javascript:;"><span>Poker</span></a></li>
+            <ng-container *ngFor="let sport of sportList;trackBy:trackBySport; let index = index">
+              <li [ngClass]="{'active':index==0}" *ngIf="!sport.isTeenpatti">
+                <a data-toggle="tab" href="#{{sport.id}}">{{sport.name}} </a>
+              </li>
+            </ng-container>
             </ul>
             <div class="tab-items">
               <div class="tab-item in">

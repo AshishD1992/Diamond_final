@@ -5,20 +5,23 @@
 
 
 <div class="cri">
+   
 <ul  role="tablist" class="nav nav-pills nav-fill" aria-label="Tabs">
     <li  class="active nav-item">
         <a  href="javascript:void(0);" role="tab" class="nav-link active" aria-controls="" aria-selected="true" id="">
             <span ></span>
             <div >
                 <img  class="img-fluid" src="assets/images/4.png">
-                <b >Cricket</b>
+                <b >sport</b>
             </div>
         </a>
     </li>
 </ul>
 
 <div class="ng-star-inserted">
+   
     <div class="row th-head">
+
         <div class="col-lg-7 col-md-5 col-6">
             <p>games</p>
         </div>
@@ -28,14 +31,20 @@
             <span>2</span>
         </div>
         <!----></div>
+        <ng-container *ngFor="let data of sportList;trackBy:trackBySport; let index = index">
+            <ng-container *ngFor="let sport of data.matches;trackBy:trackBySport;">
         <div class="row td-body ng-star-inserted">
+           
+                
             <div class="col-md-4 col-lg-5 col-6">
+                
                 <a  routerLink="/sport-event/fullmarket" class="ng-star-inserted">
-                    <p> New South Wales Blues vs. Tasmania Tigers <span>/</span>
-                        <b> Feb 25 2022 09:05 AM</b>
+                    <p> <span></span>
+                        <b> {{sport.matchName}}/{{sport.matchDate}}</b>
                     </p>
                 </a><!----><!---->
             </div>
+      
             <div class="col-md-1 col-lg-2 col-6 px-lg-0">
                 <div class="game-icons ng-star-inserted">
                     <span class="game-icon"><img  src="assets/images/ic_fancy.png" class="fancy-icon"></span>
@@ -54,86 +63,38 @@
                 <div class="list-event-odds ng-star-inserted">
                     <div class="btn-grp-cs">
                         <button class="back">
-                            <span class="odd">1.58</span>
+                            <span class="odd">{{sport.runner1Back}}</span>
                         </button>
                         <button class="lay">
-                            <span class="odd">-</span>
+                            <span class="odd">{{sport.runner1Lay}}</span>
                         </button><!---->
                     </div>
                     <div class="btn-grp-cs">
                         <button class="back">
-                            <span class="odd">-</span>
+                            <span class="odd">{{sport.runner3Back}}</span>
                         </button>
                         <button class="lay">
-                            <span class="odd">-</span>
+                            <span class="odd">{{sport.runner3Lay}}</span>
                         </button><!---->
                     </div>
                     <div class="btn-grp-cs">
                         <button class="back">
-                            <span class="odd">2.4</span>
+                            <span class="odd">{{sport.runner2Back}}</span>
                         </button>
                         <button class="lay">
-                            <span class="odd">-</span>
+                            <span class="odd">{{sport.runner2Lay}}</span>
                         </button><!---->
                     </div><!---->
                 </div><!---->
             </div>
+          
         </div>
-        <div class="row td-body ng-star-inserted">
-            <div class="col-md-4 col-lg-5 col-6">
-<a  routerLink="/sport-event/fullmarket" class="ng-star-inserted">
-<p> Msc Frankfurt vs. Calpe Giants <span>/</span>
-                        <b> Mar 01 2022 01:30 PM</b>
-                    </p>
-                </a><!----><!---->
-            </div>
-            <div class="col-md-1 col-lg-2 col-6 px-lg-0">
-                <div  class="game-icons">
-                    <span  class="game-icon">
-                        <span  class="active"></span><!----></span>
-                        <span  class="game-icon"><i  class="fa fa-tv v-m icon-tv"></i></span>
-                        <span  class="game-icon"><!----></span>
-                        <span  class="game-icon"><!----></span></div>
-                <!----></div>
-<div class="col-md-4 col-12 d-sm-none d-block th-head text-center ng-star-inserted">
-                    <span>1</span>
-                    <span>X</span>
-                    <span>2</span>
-                </div><!---->
-                <div class="col-md-7 col-lg-5 col-12 pr-xl-0">
-<div class="list-event-odds ng-star-inserted">
-                        <div class="btn-grp-cs">
-                            <button class="back">
-                                <span class="odd">-</span>
-                            </button>
-                                <button class="lay">
-                                    <span class="odd">-</span>
-                                </button><!---->
-                            </div>
-                            <div class="btn-grp-cs">
-                                <button class="back">
-                                    <span class="odd">-</span>
-                                </button>
-                                <button class="lay">
-                                    <span class="odd">-</span>
-                                </button><!---->
-                            </div>
-                            <div class="btn-grp-cs">
-                                <button class="back">
-                                    <span class="odd">-</span>
-                                </button>
-                                <button class="lay">
-                                    <span class="odd">-</span>
-                                </button><!---->
-                            </div>
-<div class="suspendedMessage ng-star-inserted">SUSPENDED</div><!---->
-                        </div><!---->
-                    </div>
-                </div>
-               
+     </ng-container>
+    </ng-container>      
                     
                    
-                  
+           
 
                    <!----></div>
+              
 </div>
