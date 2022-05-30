@@ -2,6 +2,7 @@ import * as moment from 'moment';
 
 export function checkBettingEnable(currentDate: string, data: any) {
   
+  // console.log(currentDate, data);
   if (currentDate == undefined) {
     return false;
   }
@@ -10,6 +11,7 @@ export function checkBettingEnable(currentDate: string, data: any) {
 
   if (data.settings) {
     
+    // console.log(data.settings.betBeforeInplayMins)
 
     if (data.settings.betBeforeInplayMins == 1) {
       if (data.sportId == 4) {
@@ -24,6 +26,8 @@ export function checkBettingEnable(currentDate: string, data: any) {
     else {
       if (data.sportId == 4) {
         
+        // var time = moment.duration("00:30:00");
+        // matchDate = matchDate.subtract(time);
         var daysMinus = 1;
         matchDate = matchDate.subtract(daysMinus, "days");
       }
