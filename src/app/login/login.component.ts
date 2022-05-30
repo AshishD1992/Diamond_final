@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   LoginForm:any = FormGroup;
   ipInfo: any;
+  tango = 6;
 submitted = false;
 constructor( private formBuilder: FormBuilder,
   private loginService: LoginService,

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-
+import { MainComponent } from './main/main.component';
 
 import { FooterComponent } from './footer/footer.component';
 // import { SharedModule } from './shared.module';
@@ -40,7 +40,7 @@ import { DataTablesModule } from 'angular-datatables';
   declarations: [
     AppComponent,
     LoginComponent,
-
+    MainComponent,
     FooterComponent,
 
     HomeComponent,
