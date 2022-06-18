@@ -1,4 +1,23 @@
 
+
+@import "src/sport.scss";
+    
+
+.cri{
+    margin-left: 225px;
+    margin-top: 12px;
+}
+@media (max-width: 767px){
+    .cri{
+        margin-left: 0px;
+        margin-top: 12px;
+    }
+}
+.img-fluid, .img-thumbnail {
+   
+    display: block;
+}
+
 a {
    
     text-decoration: auto;

@@ -25,115 +25,69 @@
             <span>X</span>
             <span>2</span>
         </div>
-        <!----></div>
-        <div class="row td-body ng-star-inserted">
-            <div class="col-md-4 col-lg-5 col-6">
-                <a  routerLink="/sport-event/fullmarket" class="ng-star-inserted">
-                    <p> New South Wales Blues vs. Tasmania Tigers <span>/</span>
-                        <b> Feb 25 2022 09:05 AM</b>
-                    </p>
-                </a><!----><!---->
-            </div>
-            <div class="col-md-1 col-lg-2 col-6 px-lg-0">
+       </div>
+       <ng-container *ngFor="let data of sportList;trackBy:trackBySport; let index = index">
+        <ng-container *ngFor="let sport of data.matches;trackBy:trackBySport;">
+    <div class="row td-body ng-star-inserted" *ngIf="data.id==1">
+       
+            
+        <div class="col-md-4 col-lg-5 col-6">
+            
+            <a  routerLink="/sport-event/fullmarket" class="ng-star-inserted">
+                <p> <span></span>
+                    <b> {{sport.matchName}}/{{sport.matchDate}}</b>
+                </p>
+            </a><!----><!---->
+        </div>
+  
+        <div class="col-md-1 col-lg-2 col-6 px-lg-0">
+            <div class="game-icons ng-star-inserted">
+                <span class="game-icon"><span class="active" *ngIf="sport.inPlay==1"></span></span>
+                <span class="game-icon"><i class="fa fa-television" *ngIf="sport.videoEnabled"></i></span>
+                <span class="game-icon"><img  src="assets/images/ic_fancy.png" class="fancy-icon" *ngIf="sport.isFancy"></span>
+                <span class="game-icon"><img  src="assets/images/ic_bm (1).png" class="bookmaker-icon" *ngIf="sport.isBook"></span>
                
-                    <div class="game-icons ng-star-inserted">
-                        <span class="game-icon"><img _ngcontent-mbf-c79="" src="assets/images/ic_fancy.png" class="fancy-icon"></span>
-                        <span class="game-icon"><img _ngcontent-mbf-c79="" src="assets/images/ic_bm (1).png" class="bookmaker-icon"></span>
-                        <span class="game-icon"><!----></span>
-                        <span class="game-icon"><!----></span>
-                    </div><!---->
-               
-            </div>
-            <div class="col-md-4 col-12 d-sm-none d-block th-head text-center ng-star-inserted">
-                <span>1</span>
-                <span>X</span>
-                <span>2</span>
-            </div>
-            <!---->
-            <div class="col-md-7 col-lg-5 col-12 pr-xl-0">
-                <div class="list-event-odds ng-star-inserted">
-                    <div class="btn-grp-cs">
-                        <button class="back">
-                            <span class="odd">1.58</span>
-                        </button>
-                        <button class="lay">
-                            <span class="odd">-</span>
-                        </button><!---->
-                    </div>
-                    <div class="btn-grp-cs">
-                        <button class="back">
-                            <span class="odd">-</span>
-                        </button>
-                        <button class="lay">
-                            <span class="odd">-</span>
-                        </button><!---->
-                    </div>
-                    <div class="btn-grp-cs">
-                        <button class="back">
-                            <span class="odd">2.4</span>
-                        </button>
-                        <button class="lay">
-                            <span class="odd">-</span>
-                        </button><!---->
-                    </div><!---->
-                </div><!---->
+                
             </div>
         </div>
-        <div class="row td-body ng-star-inserted">
-            <div class="col-md-4 col-lg-5 col-6">
-<a routerLink="/sport-event/fullmarket" class="ng-star-inserted">
-<p> Msc Frankfurt vs. Calpe Giants <span>/</span>
-                        <b> Mar 01 2022 01:30 PM</b>
-                    </p>
-                </a><!----><!---->
-            </div>
-            <div class="col-md-1 col-lg-2 col-6 px-lg-0">
-                <div _ngcontent-mbf-c79="" class="game-icons">
-                    <span _ngcontent-mbf-c79="" class="game-icon">
-                        <span _ngcontent-mbf-c79="" class="active"></span><!----></span>
-                        <span _ngcontent-mbf-c79="" class="game-icon"><i _ngcontent-mbf-c79="" class="fa fa-tv v-m icon-tv"></i></span>
-                        <span _ngcontent-mbf-c79="" class="game-icon"><!----></span>
-                        <span _ngcontent-mbf-c79="" class="game-icon"><!----></span></div>
-                <!----></div>
-<div class="col-md-4 col-12 d-sm-none d-block th-head text-center ng-star-inserted">
-                    <span>1</span>
-                    <span>X</span>
-                    <span>2</span>
-                </div><!---->
-                <div class="col-md-7 col-lg-5 col-12 pr-xl-0">
-<div class="list-event-odds ng-star-inserted">
-                        <div class="btn-grp-cs">
-                            <button class="back">
-                                <span class="odd">-</span>
-                            </button>
-                                <button class="lay">
-                                    <span class="odd">-</span>
-                                </button><!---->
-                            </div>
-                            <div class="btn-grp-cs">
-                                <button class="back">
-                                    <span class="odd">-</span>
-                                </button>
-                                <button class="lay">
-                                    <span class="odd">-</span>
-                                </button><!---->
-                            </div>
-                            <div class="btn-grp-cs">
-                                <button class="back">
-                                    <span class="odd">-</span>
-                                </button>
-                                <button class="lay">
-                                    <span class="odd">-</span>
-                                </button><!---->
-                            </div>
-<div class="suspendedMessage ng-star-inserted">SUSPENDED</div><!---->
-                        </div><!---->
-                    </div>
+        <div class="col-md-4 col-12 d-sm-none d-block th-head text-center ng-star-inserted">
+            <span>1</span>
+            <span>X</span>
+            <span>2</span>
+        </div>
+        <!---->
+        <div class="col-md-7 col-lg-5 col-12 pr-xl-0">
+            <div class="list-event-odds ng-star-inserted">
+                <div class="btn-grp-cs">
+                    <button class="back">
+                        <span class="odd">{{sport.runner1Back}}</span>
+                    </button>
+                    <button class="lay">
+                        <span class="odd">{{sport.runner1Lay}}</span>
+                    </button><!---->
                 </div>
-               
-                    
-                   
-                  
-
-                   <!----></div>
+                <div class="btn-grp-cs">
+                    <button class="back">
+                        <span class="odd">{{sport.runner3Back}}</span>
+                    </button>
+                    <button class="lay">
+                        <span class="odd">{{sport.runner3Lay}}</span>
+                    </button><!---->
+                </div>
+                <div class="btn-grp-cs">
+                    <button class="back">
+                        <span class="odd">{{sport.runner2Back}}</span>
+                    </button>
+                    <button class="lay">
+                        <span class="odd">{{sport.runner2Lay}}</span>
+                    </button><!---->
+                </div><!---->
+            </div><!---->
+        </div>
+      
+    </div>
+ </ng-container>
+</ng-container> 
+       
+        </div>
 </div>

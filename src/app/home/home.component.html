@@ -4,75 +4,144 @@
     <input class="radio" id="three" name="group" type="radio">
     <input class="radio" id="four" name="group" type="radio">
     <div class="tabs">
-    <label class="tab" id="one-tab" for="one"><span >IN-PLAY</span></label>
-    <label class="tab" id="two-tab" for="two"><span >SPORTS</span></label>
-    <label class="tab" id="three-tab" for="three"> 
-        <span>CASINO</span>
-  </label>
-  <label class="tab" id="four-tab" for="four"> 
-    <span >OTHERS</span>
-</label>
-      </div>
+        <label class="tab" id="one-tab" for="one"><span>IN-PLAY</span></label>
+        <label class="tab" id="two-tab" for="two"><span>SPORTS</span></label>
+        <label class="tab" id="three-tab" for="three">
+            <span>CASINO</span>
+        </label>
+        <label class="tab" id="four-tab" for="four">
+            <span>OTHERS</span>
+        </label>
+    </div>
     <div class="panels">
-    <div class="panel" id="one-panel">
-        <div class="tab-wrap">
-            <ul class="tab-list">
-            <ng-container *ngFor="let sport of sportList;trackBy:trackBySport; let index = index">
-              <li [ngClass]="{'active':index==0}" *ngIf="!sport.isTeenpatti">
-                <a data-toggle="tab" href="#{{sport.id}}">{{sport.name}} </a>
-              </li>
-            </ng-container>
-            </ul>
-            <div class="tab-items">
-              <div class="tab-item in">
-                <app-cricket></app-cricket>
-              </div>
-              <div class="tab-item">
-                <app-football></app-football>
-              </div>
-              <div class="tab-item">
-                <app-tennis></app-tennis>
-              </div>
-              <div class="tab-item">
-                <app-election></app-election>
-              </div>
-            <div class="tab-item">
-                contents of Teenpatti
-              </div>
-              <div class="tab-item">
-                contents of Roulette
-              </div>
-              <div class="tab-item">
-                contents of 7 Up & Down
-              </div>
-              <div class="tab-item">
-                contents of 32 Card Casino
-              </div>
-              <div class="tab-item">
-                contents of Sicbo
-              </div>
-              <div class="tab-item">
-                contents of Poker
-              </div>
+
+        <div class="panel" id="one-panel">
+            <div class="tab-wrap">
+                <ul class="tab-list">
+                    <ng-container *ngFor="let sport of sportList;trackBy:trackBySport; let index = index">
+                        <li [ngClass]="{'active':index==0}">
+                            <a data-toggle="tab">{{sport.name}} </a>
+                        </li>
+                    </ng-container>
+                </ul>
+                <div class="tab-items">
+                    <div class="tab-item" [ngClass]="index==0 ? 'in' : ''" *ngFor="let data of sportList;trackBy:trackBySport; let index = index">
+               
+                        <div class="cri">
+                       
+                        <ul  role="tablist" class="nav nav-pills nav-fill" aria-label="Tabs">
+                            <li  class="active nav-item">
+                                <a  href="javascript:void(0);" role="tab" class="nav-link active" aria-controls="" aria-selected="true" id="">
+                                    <span ></span>
+                                    <div >
+                                        <!-- <img  class="img-fluid" src="assets/images/4.png"> -->
+                                        <b >{{data.name}}</b>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        
+                        <div class="ng-star-inserted">
+                           
+                            <div class="row th-head">
+                        
+                                <div class="col-lg-7 col-md-5 col-6">
+                                    <p>games</p>
+                                </div>
+                                <div class="col-lg-5 col-md-7 col-12 text-center px-xl-0 ng-star-inserted">
+                                    <span>1</span>
+                                    <span>X</span>
+                                    <span>2</span>
+                                </div>
+                                </div>
+                               
+                                    <ng-container *ngFor="let sport of data.matches;trackBy:trackBySport;">
+                                <div class="row td-body ng-star-inserted">
+                                   
+                                        
+                                    <div class="col-md-4 col-lg-5 col-6">
+                                        
+                                        <a  routerLink="/sport-event/fullmarket" class="ng-star-inserted">
+                                            <p> <span></span>
+                                                <b> {{sport.matchName}}/{{sport.matchDate}}</b>
+                                            </p>
+                                        </a>
+                                    </div>
+                              
+                                    <div class="col-md-1 col-lg-2 col-6 px-lg-0">
+                                        <div class="game-icons ng-star-inserted">
+                                            <span class="game-icon"><span class="active" *ngIf="sport.inPlay==1"></span></span>
+                                            <span class="game-icon"><i class="fa fa-television" *ngIf="sport.videoEnabled"></i></span>
+                                            <span class="game-icon"><img  src="assets/images/ic_fancy.png" class="fancy-icon" *ngIf="sport.isFancy"></span>
+                                            <span class="game-icon"><img  src="assets/images/ic_bm (1).png" class="bookmaker-icon" *ngIf="sport.isBook"></span>
+                                           
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12 d-sm-none d-block th-head text-center ng-star-inserted">
+                                        <span>1</span>
+                                        <span>X</span>
+                                        <span>2</span>
+                                    </div>
+                                    
+                                    <div class="col-md-7 col-lg-5 col-12 pr-xl-0">
+                                        <div class="list-event-odds ng-star-inserted">
+                                            <div class="btn-grp-cs">
+                                                <button class="back">
+                                                    <span class="odd">{{sport.runner1Back}}</span>
+                                                </button>
+                                                <button class="lay">
+                                                    <span class="odd">{{sport.runner1Lay}}</span>
+                                                </button>
+                                            </div>
+                                            <div class="btn-grp-cs">
+                                                <button class="back">
+                                                    <span class="odd">{{sport.runner3Back}}</span>
+                                                </button>
+                                                <button class="lay">
+                                                    <span class="odd">{{sport.runner3Lay}}</span>
+                                                </button>
+                                            </div>
+                                            <div class="btn-grp-cs">
+                                                <button class="back">
+                                                    <span class="odd">{{sport.runner2Back}}</span>
+                                                </button>
+                                                <button class="lay">
+                                                    <span class="odd">{{sport.runner2Lay}}</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                             </ng-container>
+                               
+                            </div>
+                                      
+                        </div>
+                        
+                                        </div>
+                  
+                   
+                </div>
             </div>
-          </div>
+        </div>
+        <div class="panel" id="two-panel">
+
+        </div>
+        <div class="panel" id="three-panel">
+
+        </div>
+        <div class="panel" id="four-panel">
+            <p _ngcontent-paw-c78="">Comming Soon....</p>
+        </div>
+    </div>
 </div>
-<div class="panel" id="two-panel">
-   
-  </div>
-  <div class="panel" id="three-panel">
-     
-    </div>
-    <div class="panel" id="four-panel">
-        <p _ngcontent-paw-c78="">Comming Soon....</p>
-      </div>
-    </div>
-    </div>
 
 
 
 
- <!-- <div class="container">
+<!-- <div class="container">
     <div class="row">
         <div class="col-md-8">
             <div class="tab" role="tabpanel">
@@ -118,147 +187,144 @@ bdfg
 
 <!-- images -->
 
-<div  class="dash_casino">
+<div class="dash_casino">
     <h2>live casino</h2>
-    <a  routerLink="exchanges/teenpatti">
-        <div  class="d-inline-block casinoicons">
-            <img  class="img-fluid" src="assets/images/teenpatti.jpg">
-            <div  class="casinoname">Live Teenpatti</div>
+    <a routerLink="exchanges/teenpatti">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/teenpatti.jpg">
+            <div class="casinoname">Live Teenpatti</div>
         </div>
     </a>
-    <a  routerLink="exchanges/t20">
-        <div  class="d-inline-block casinoicons">
-            <img  class="img-fluid" src="assets/images/teenpatti.jpg">
-            <div  class="casinoname">Teenpatti T20</div>
+    <a routerLink="exchanges/t20">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/teenpatti.jpg">
+            <div class="casinoname">Teenpatti T20</div>
         </div>
     </a>
-    <a  routerLink="exchanges/muflis">
-        <div  class="d-inline-block casinoicons">
-            <img  class="img-fluid" src="assets/images/teenpatti.jpg">
-            <div  class="casinoname">Mulfis Teenpatti</div>
+    <a routerLink="exchanges/muflis">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/teenpatti.jpg">
+            <div class="casinoname">Mulfis Teenpatti</div>
         </div>
     </a>
     <a routerLink="exchanges/meter">
-        <div  class="d-inline-block casinoicons">
-            <img  class="img-fluid" src="assets/images/cmeter.jpg">
-            <div  class="casinoname">casino meter</div>
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/cmeter.jpg">
+            <div class="casinoname">casino meter</div>
         </div>
     </a>
     <a routerLink="exchanges/card">
-        <div  class="d-inline-block casinoicons">
-            <img  class="img-fluid" src="assets/images/32cardsA.jpg">
-            <div  class="casinoname">32 card casino</div>
-        </div></a>
-        <a  routerLink="exchanges/anderbahar">
-            <div  class="d-inline-block casinoicons">
-                <img  class="img-fluid" src="assets/images/andar-bahar.jpg">
-                <div  class="casinoname">Andar Bahar</div>
-            </div>
-        </a>
-        <a  routerLink="exchanges/updown">
-            <div  class="d-inline-block casinoicons">
-                <img  class="img-fluid" src="assets/images/lucky7live.jpg">
-                <div  class="casinoname">7 up &amp; down</div>
-            </div>
-        </a>
-        <a  routerLink="exchanges/oneday">
-            <div  class="d-inline-block casinoicons">
-                <img  class="img-fluid" src="assets/images/dt.jpg">
-                <div  class="casinoname">Dragon Tiger</div>
-            </div>
-        </a>
-        <a  routerLink="exchanges/poker">
-            <div  class="d-inline-block casinoicons">
-                <img  class="img-fluid" src="assets/images/poker.jpeg">
-                <div  class="casinoname">Poker</div>
-            </div>
-        </a>
-        <a routerLink="exchanges/amar-akbar" >
-            <div  class="d-inline-block casinoicons">
-                <img  class="img-fluid" src="assets/images/aaa.jpeg">
-                <div  class="casinoname">Amar Akbar Anthony</div>
-            </div>
-        </a>
-        <a  routerLink="exchanges/sicbo">
-            <div  class="d-inline-block casinoicons">
-                <img  class="img-fluid" src="assets/images/sicbo.jpg">
-                <div  class="casinoname">Sicbo</div>
-            </div>
-        </a>
-        <a routerLink="exchanges/roulette">
-            <div  class="d-inline-block casinoicons">
-                <img  class="img-fluid" src="assets/images/roulette.jpg">
-                <div  class="casinoname">Roulette</div>
-            </div>
-        </a>
-        <a routerLink="exchanges/teen-virtual">
-            <div  class="d-inline-block casinoicons">
-                <img  class="img-fluid" src="assets/images/teenpatti_v.jpeg">
-                <div  class="casinoname">Teenpatti One-Day (Virtual)</div>
-            </div>
-        </a>
-        <a routerLink="exchanges/t20-virtual">
-            <div  class="d-inline-block casinoicons">
-                <img  class="img-fluid" src="assets/images/teenpatti_v.jpeg">
-                <div  class="casinoname">Teenpatti T20 (Virtual)</div>
-            </div>
-        </a>
-        <a routerLink="exchanges/up-virtual">
-            <div  class="d-inline-block casinoicons">
-                <img  class="img-fluid" src="assets/images/lucky7.jpg">
-                <div  class="casinoname">7 Up &amp; Down (Virtual)</div>
-            </div>
-        </a>
-        <a routerLink="exchanges/card-virtual">
-            <div  class="d-inline-block casinoicons">
-                <img  class="img-fluid" src="assets/images/32cardsA_v.jpeg">
-                <div  class="casinoname">32 Cards (Virtual)</div>
-            </div>
-        </a>
-        <a  routerLink="exchanges/ander-virtual">
-            <div  class="d-inline-block casinoicons">
-                <img  class="img-fluid" src="assets/images/andar-bahar_v.jpeg">
-                <div  class="casinoname">Andar Bahar (Virtual)</div>
-            </div>
-        </a>
-        <a routerLink="exchanges/roulette-virtual">
-            <div  class="d-inline-block casinoicons">
-                <img  class="img-fluid" src="assets/images/roulette_v.jpeg">
-                <div  class="casinoname">Roulette (Virtual)</div>
-            </div></a>
-            <a routerLink="exchanges/tiger-virtual">
-                <div  class="d-inline-block casinoicons">
-                    <img  class="img-fluid" src="assets/images/dt_v.jpeg">
-                    <div  class="casinoname">Dragon Tiger (Virtual)</div>
-                </div>
-            </a>
-            <a routerLink="exchanges/poker-virtual">
-                <div  class="d-inline-block casinoicons">
-                    <img  class="img-fluid" src="assets/images/poker_v.jpeg">
-                    <div  class="casinoname">Poker (Virtual)</div>
-                </div>
-            </a>
-            <a  routerLink="exchanges/amar-akbar-virtual">
-                <div  class="d-inline-block casinoicons">
-                    <img  class="img-fluid" src="assets/images/aaa_v.jpeg">
-                    <div  class="casinoname">Amar Akbar Anthony (Virtual)</div>
-                </div></a>
-                <a routerLink="exchanges/six-poker-virtual">
-                    <div  class="d-inline-block casinoicons">
-                        <img  class="img-fluid" src="assets/images/sixpoker_v.jpeg">
-                        <div  class="casinoname">Six Player Poker (Virtual)</div>
-                    </div>
-                </a>
-                <a routerLink="exchanges/six-poker-virtual">
-                    <div  class="d-inline-block casinoicons">
-                        <img  class="img-fluid" src="assets/images/hilow_v.png">
-                        <div  class="casinoname">Hi-Low (Virtual)</div>
-                    </div>
-                </a>
-            </div>
-
-
-
-
-
-     
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/32cardsA.jpg">
+            <div class="casinoname">32 card casino</div>
+        </div>
+    </a>
+    <a routerLink="exchanges/anderbahar">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/andar-bahar.jpg">
+            <div class="casinoname">Andar Bahar</div>
+        </div>
+    </a>
+    <a routerLink="exchanges/updown">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/lucky7live.jpg">
+            <div class="casinoname">7 up &amp; down</div>
+        </div>
+    </a>
+    <a routerLink="exchanges/oneday">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/dt.jpg">
+            <div class="casinoname">Dragon Tiger</div>
+        </div>
+    </a>
+    <a routerLink="exchanges/poker">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/poker.jpeg">
+            <div class="casinoname">Poker</div>
+        </div>
+    </a>
+    <a routerLink="exchanges/amar-akbar">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/aaa.jpeg">
+            <div class="casinoname">Amar Akbar Anthony</div>
+        </div>
+    </a>
+    <a routerLink="exchanges/sicbo">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/sicbo.jpg">
+            <div class="casinoname">Sicbo</div>
+        </div>
+    </a>
+    <a routerLink="exchanges/roulette">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/roulette.jpg">
+            <div class="casinoname">Roulette</div>
+        </div>
+    </a>
+    <a routerLink="exchanges/teen-virtual">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/teenpatti_v.jpeg">
+            <div class="casinoname">Teenpatti One-Day (Virtual)</div>
+        </div>
+    </a>
+    <a routerLink="exchanges/t20-virtual">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/teenpatti_v.jpeg">
+            <div class="casinoname">Teenpatti T20 (Virtual)</div>
+        </div>
+    </a>
+    <a routerLink="exchanges/up-virtual">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/lucky7.jpg">
+            <div class="casinoname">7 Up &amp; Down (Virtual)</div>
+        </div>
+    </a>
+    <a routerLink="exchanges/card-virtual">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/32cardsA_v.jpeg">
+            <div class="casinoname">32 Cards (Virtual)</div>
+        </div>
+    </a>
+    <a routerLink="exchanges/ander-virtual">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/andar-bahar_v.jpeg">
+            <div class="casinoname">Andar Bahar (Virtual)</div>
+        </div>
+    </a>
+    <a routerLink="exchanges/roulette-virtual">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/roulette_v.jpeg">
+            <div class="casinoname">Roulette (Virtual)</div>
+        </div>
+    </a>
+    <a routerLink="exchanges/tiger-virtual">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/dt_v.jpeg">
+            <div class="casinoname">Dragon Tiger (Virtual)</div>
+        </div>
+    </a>
+    <a routerLink="exchanges/poker-virtual">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/poker_v.jpeg">
+            <div class="casinoname">Poker (Virtual)</div>
+        </div>
+    </a>
+    <a routerLink="exchanges/amar-akbar-virtual">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/aaa_v.jpeg">
+            <div class="casinoname">Amar Akbar Anthony (Virtual)</div>
+        </div>
+    </a>
+    <a routerLink="exchanges/six-poker-virtual">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/sixpoker_v.jpeg">
+            <div class="casinoname">Six Player Poker (Virtual)</div>
+        </div>
+    </a>
+    <a routerLink="exchanges/six-poker-virtual">
+        <div class="d-inline-block casinoicons">
+            <img class="img-fluid" src="assets/images/hilow_v.png">
+            <div class="casinoname">Hi-Low (Virtual)</div>
+        </div>
+    </a>
+</div>

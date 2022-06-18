@@ -14,14 +14,16 @@ import { FootballComponent } from './sports/football/football.component';
 import { TennisComponent } from './sports/tennis/tennis.component';
 import { ElectionComponent } from './sports/election/election.component';
 import { MainComponent } from './main/main.component';
+import {AuthGuard} from './services/auth.guard'
 
 const routes: Routes = [
 
 
 
+  {path:'', component:  LoginComponent,},
   {path:'login', component:  LoginComponent,},
-  {path:'',component:MainComponent,children:[
-    {path:'', component: HomeComponent,},
+  {path:'',component:MainComponent,canActivate:[AuthGuard],children:[
+    {path:'home', component: HomeComponent,},
     {path:'footer', component: FooterComponent,},
     {path:'rules', component:  RulesComponent,},
     {path:'set-button-value', component: SetButtonValueComponent,},
@@ -30,7 +32,7 @@ const routes: Routes = [
     {path:'cricket', component:  CricketComponent,},
     {path:'football', component:  FootballComponent ,},
     {path:'tennis', component:  TennisComponent,},
-    {path:'election ', component:  ElectionComponent ,},
+    {path:'election', component:  ElectionComponent ,},
     {
       path: 'sports',
       loadChildren: () =>
@@ -53,12 +55,7 @@ const routes: Routes = [
     },
 
   ]}
-  
-  // {
-  //   path: 'sports',
-  //   loadChildren: () =>
-  //     import('./sports/sports.module').then((m) => m.SportsModule),
-  // },
+
 
 
 ];

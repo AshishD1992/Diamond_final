@@ -84,6 +84,9 @@ export class HomeComponent implements OnInit {
   trackBySport(index:any,item:any) {
     return item.bfId;
   }
+  trackByEvent(index:any, item:any) {
+    return item.matchId;
+  }
 
 }
 

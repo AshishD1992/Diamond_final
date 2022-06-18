@@ -12,7 +12,7 @@
             <span ></span>
             <div >
                 <img  class="img-fluid" src="assets/images/4.png">
-                <b >sport</b>
+                <b >Cricket</b>
             </div>
         </a>
     </li>
@@ -33,7 +33,7 @@
         <!----></div>
         <ng-container *ngFor="let data of sportList;trackBy:trackBySport; let index = index">
             <ng-container *ngFor="let sport of data.matches;trackBy:trackBySport;">
-        <div class="row td-body ng-star-inserted">
+        <div class="row td-body ng-star-inserted" *ngIf="data.id==4">
            
                 
             <div class="col-md-4 col-lg-5 col-6">
@@ -47,11 +47,13 @@
       
             <div class="col-md-1 col-lg-2 col-6 px-lg-0">
                 <div class="game-icons ng-star-inserted">
-                    <span class="game-icon"><img  src="assets/images/ic_fancy.png" class="fancy-icon"></span>
-                    <span class="game-icon"><img  src="assets/images/ic_bm (1).png" class="bookmaker-icon"></span>
-                    <span class="game-icon"><!----></span>
-                    <span class="game-icon"><!----></span>
-                </div><!---->
+                    <span class="game-icon"><span class="active" *ngIf="sport.inPlay==1"></span></span>
+                    <span class="game-icon"><i class="fa fa-television" *ngIf="sport.videoEnabled"></i></span>
+                    <span class="game-icon"><img  src="assets/images/ic_fancy.png" class="fancy-icon" *ngIf="sport.isFancy"></span>
+                    <span class="game-icon"><img  src="assets/images/ic_bm (1).png" class="bookmaker-icon" *ngIf="sport.isBook"></span>
+                   
+                    
+                </div>
             </div>
             <div class="col-md-4 col-12 d-sm-none d-block th-head text-center ng-star-inserted">
                 <span>1</span>
