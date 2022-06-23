@@ -20,12 +20,12 @@
     position: relative;
 }
 .detail_screen .col-md-8, .detail_screen .col-md-4 {
-    padding: 0 3px 0px 0px;
+    padding: 0 10px 0px 0px;
 }
 @media (max-width: 767px){
-    .detail_screen .col-md-8, .detail_screen .col-md-4 {
+    .detail_screen .col-md-8, .detail_screen .col-md-4, .detail_screen .col-md-6,.detail_screen .col-md-12 {
         
-        padding: 3px 0px 0px 12px;
+        padding: 0px 0px ;
     }  
 }
 .ds-block-mobile {
@@ -46,19 +46,32 @@
     text-align: left;
     font-size: 13px;
     text-transform: uppercase;
-    padding: 0px;
-    margin-left: -14px;
-    width: 100%;
+    padding: 0px 9px 0px 7px;
+    margin-left: -11px;
+    width: 100.99%;
     color: #fff;
     font-weight: 600;
     margin-bottom: 0;
     background: #2c3e50;
 }
+@media (max-width: 767px){
+    .detail_screen .event-title {
+        width: 105.99%;
+    }
+}
+    @media (max-width: 767px){
+    .odds_bhav .layex, .odds_bhav .backex {
+        display: none;
+    }
+}
+
 
 @media (min-width: 768px){
 .col-md-12 {
     flex: 0 0 auto;
-    width: 96%;
+    width: 100%;
+    padding-right: 0px;
+    margin-left: -11px;
 }
 }
 .panel-title {
@@ -147,15 +160,15 @@
 }
 @media (max-width: 767px){
     .col-md-12{
-        margin: 0px 0px 0px -5px;
-        width: 95%;
+        margin: 0px 0px 0px 0px;
+    width: 100%;
     }
 }
 @media (max-width: 767px){
-    .events_odds {
-        width: 60%;
-    }
-    }
+.events_odds {
+    width: 55%;
+}
+}
 .events_odds {
     width: 100%;
     float: left;
@@ -203,8 +216,9 @@
     height: auto;
     color: #000;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 11px;
 }
+
 
 
 @media (max-width: 767px){
@@ -219,9 +233,14 @@
 }}
 @media (max-width: 767px){
 .odds_bhav {
-    width: 45%;
+    width:100%;
 }
 }
+@media (max-width: 767px){
+.bhavbocHideM {
+    display: none !important;
+}}
+
 .heading a {
     font-size: 14px;
     font-weight: bolder;
@@ -240,7 +259,7 @@ b, strong {
 }
 .size .ng-binding {
     font-size: 10px;
-    display: block;
+    display: table-column;
 }
 .Lay_oddsbox {
     background: #faa9ba;
@@ -299,6 +318,8 @@ b, strong {
 .col-md-6 {
     flex: 0 0 auto;
     width: 50%;
+    padding-left: 0px;
+    padding-right: 7px;
 }
 }
 
@@ -401,6 +422,7 @@ b, strong {
         // margin-bottom: 0;
         // height: 40px;
         background: #08c;
+        width: 59.4vh;
         // white-space: nowrap;
     }
 }

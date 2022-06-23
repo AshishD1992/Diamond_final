@@ -27,9 +27,7 @@ export class SharedataService {
   bMExposure$ = this._currentBMExposureSub.asObservable();
 
   private _currentFancyExposureSub = new BehaviorSubject<any>(null);
-  fancyExposure$: Observable<
-    any
-  > = this._currentFancyExposureSub.asObservable();
+  fancyExposure$: Observable<any> = this._currentFancyExposureSub.asObservable();
 
   private _currentAllMatchUnmatchBetsSub = new BehaviorSubject<any>(null);
   allMatchUnmatchBets$ = this._currentAllMatchUnmatchBetsSub.asObservable();

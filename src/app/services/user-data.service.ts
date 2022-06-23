@@ -12,19 +12,19 @@ export class UserDataService {
   constructor(private http:HttpClient) { }
 
   FundExpo():Observable<any>{
-    return this.http.get(`http://www.t20exchanges247.com/SportsRead2/SportsClient.svc/Data/FundExpo2`)
+    return this.http.get(`http://www.cricbet247.live/SportsRead2/SportsClient.svc/Data/FundExpo2`)
   }
   GetUserData():Observable<any>{
-    return this.http.get(`http://www.t20exchanges247.com/SportsRead1/SportsClient.svc/Data/GetUserData`)
+    return this.http.get(`http://www.cricbet247.live/SportsRead1/SportsClient.svc/Data/GetUserData`)
   }
   HubAddress(ID:any):Observable<any>{
-    return this.http.get(`http://www.t20exchanges247.com/SportsRead5/SportsClient.svc/Data/HubAddress?id=${ID}`)
+    return this.http.get(`http://www.cricbet247.live/SportsRead5/SportsClient.svc/Data/HubAddress?id=${ID}`)
   }
   MktData(MTID:any,MKTID:any):Observable<any>{
-    return this.http.get(`http://www.t20exchanges247.com/SportsClient/SportsClient.svc/Data/MktData?mtid=${MTID}&mktid=${MKTID}`)
+    return this.http.get(`http://www.cricbet247.live/SportsClient/SportsClient.svc/Data/MktData?mtid=${MTID}&mktid=${MKTID}`)
   }
   UserDescription():Observable<any>{
-    return this.http.get(`http://www.t20exchanges247.com/SportsRead3/SportsClient.svc/Data/UserDescription2`)
+    return this.http.get(`http://www.cricbet247.live/SportsRead3/SportsClient.svc/Data/UserDescription2`)
   }
 
 }

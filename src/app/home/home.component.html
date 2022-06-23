@@ -61,7 +61,7 @@
                                         
                                     <div class="col-md-4 col-lg-5 col-6">
                                         
-                                        <a  routerLink="/sport-event/fullmarket" class="ng-star-inserted">
+                                        <a  routerLink="/sport-event/fullmarket" (click)="toggleFavourite(sport)" class="ng-star-inserted">
                                             <p> <span></span>
                                                 <b> {{sport.matchName}}/{{sport.matchDate}}</b>
                                             </p>
