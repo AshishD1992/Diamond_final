@@ -38,7 +38,7 @@
     "rxjs": "~7.5.0",
     "save": "^2.4.0",
     "signalr": "^2.4.3",
-    "signalr-no-jquery": "^0.2.0",
+    "signalr-no-jquery": "^0.1.10",
     "tslib": "^2.3.0",
     "validation-service": "^1.0.3",
     "zone.js": "~0.11.4"
