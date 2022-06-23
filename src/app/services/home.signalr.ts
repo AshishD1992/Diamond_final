@@ -9,7 +9,7 @@ import { SharedataService } from './sharedata.service';
 
   export class HomeSignalrServices{
 
-    private readonly dataHubAddress: string = 'http://167.86.68.93:16501';
+    private readonly dataHubAddress: string = 'http://173.249.21.26:16501';
   private readonly proxyToken: string = '1937-789-123';
 
   homeConnection: any;
@@ -67,9 +67,8 @@ import { SharedataService } from './sharedata.service';
       // console.log(data);
       // this.dFService.shareNews(data.news);
       // this.dFService.shareDateTime(new Date(data.curTime.replace(/ /g, "T")));
-      this.dataFormat.shareNavigationData(
-        this.dataFormat.NavigationFormat(data.sportsData,data.curTime)
-      );
+      this.dataFormat.shareNavigationData(this.dataFormat.NavigationFormat(data.sportsData, data.curTime));
+
       this.shareData.shareuserData(data);
       // this.shareData.shareFancyExposure(data._fancyBook);
       // var AllBetsData = {

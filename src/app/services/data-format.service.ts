@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { customDateFormat } from '../helpers/custom-date-format';
 // import { checkBettingEnable } from '../helpers/check-betting-enabled';
 import * as _ from 'lodash';
@@ -31,7 +31,20 @@ export class DataFormatService {
   private _currentUserDescriptionSub = new BehaviorSubject<any>(null);
   userDescription$ = this._currentUserDescriptionSub.asObservable();
 
-  constructor() { }
+  fancyExposureSource: Observable<any>;
+  private currentFancyExposure: BehaviorSubject<any>;
+
+  allMatchUnmatchBetsSource: Observable<any>;
+  private currentAllMatchUnmatchBets: BehaviorSubject<any>
+
+  constructor() {
+
+    this.currentFancyExposure = <BehaviorSubject<any>>new BehaviorSubject(null);
+    this.fancyExposureSource = this.currentFancyExposure.asObservable();
+
+    this.currentAllMatchUnmatchBets = <BehaviorSubject<any>>new BehaviorSubject(null);
+    this.allMatchUnmatchBetsSource = this.currentAllMatchUnmatchBets.asObservable();
+   }
 
   shareNavigationData(data: any) {
     // this.currentNavigation.next()
@@ -374,5 +387,94 @@ export class DataFormatService {
   GetFavourites() {
     return localStorage.getItem('favourite');
   }
+
+  favouriteEventWise(sportsData:any) {
+    let groupedEvents:any = []
+    let favArray = localStorage.getItem('favourite');
+    if (favArray != null) {
+      favArray = JSON.parse(favArray);
+      _.forEach(sportsData, function (item, index) {
+        _.forEach(item.tournaments, function (item2, index2) {
+          _.forEach(item2.matches, function (item3, index3) {
+            // item3.markets.forEach(function (item4, index4) {
+            //   var runnerarray = [];
+            //   _.forEach(item4.runnerData1, function (runner, key) {
+            //     if (runner.Key != undefined) {
+            //       runnerarray.push(runner.Value);
+            //     } else {
+            //       runnerarray.push(runner);
+            //     }
+            //   });
+            //   // delete item4.runnerData;
+            //   item4['runners'] = runnerarray;
+            // });
+            let matchIndex = _.indexOf(favArray, item3.bfId);
+            if (matchIndex > -1) {
+              groupedEvents.push(item3);
+            }
+          })
+        })
+      })
+    }
+
+    return groupedEvents;
+  }
+
+  matchUnmatchBetsFormat(matchBets:any) {
+    // console.log(matchBets)
+    let matchWiseData = {
+      matchWiseBets: [],
+      totalBets: 0
+    }
+    if (!matchBets) {
+      return matchWiseData;
+    }
+    _.forEach(matchBets, (bet, betIndex) => {
+
+      if (bet.backLay == 'YES') {
+        bet.backLay = 'BACK';
+      }
+      if (bet.backLay == 'NO') {
+        bet.backLay = 'LAY';
+      }
+      matchWiseData.totalBets++;
+      if (bet.isFancy == 0) {
+        bet['profit'] = (parseFloat(bet.odds) - 1) * bet.stake;
+        bet['odds'] = parseFloat(bet.odds).toFixed(2);
+      }
+      if (bet.isFancy == 1) {
+
+        if (bet.odds.indexOf('/') > -1) {
+          bet['profit'] = (parseFloat(bet.odds.split('/')[1]) * bet.stake) / 100;
+          // bet['odds'] = (bet.score) + '/' + (bet.odds);
+        }
+      }
+      // console.log(bet.marketName)
+      if (bet.isFancy == 2) {
+        if (bet.marketName == "TO WIN THE TOSS") {
+          bet['profit'] = (parseFloat(bet.odds) - 1) * bet.stake;
+        }
+        else {
+          bet['profit'] = (parseFloat(bet.odds) / 100) * bet.stake;
+        }
+      }
+      if (bet.gameType == 1) {
+        bet['profit'] = (parseFloat(bet.odds) - 1) * bet.stake;
+        bet['odds'] = parseFloat(bet.odds).toFixed(2);
+      }
+      if (bet.gameType == 2) {
+        bet['profit'] = (parseFloat(bet.odds) - 1) * bet.stake;
+        bet['odds'] = parseFloat(bet.odds).toFixed(2);
+      }
+      // matchWiseData.matchWiseBets.push(bet);
+
+    });
+
+    // console.log(matchWiseData)
+
+    return matchWiseData;
+
+  }
+
 
 }
