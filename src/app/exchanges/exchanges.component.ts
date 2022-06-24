@@ -17,7 +17,7 @@ export class  ExchangesComponent implements OnInit {
     this.sportWise();
   }
   sportWise() {
-    this.sportSubscription = this.dfService.navigationSource.subscribe((data: null) => {
+    this.sportSubscription = this.dfService.navigation$.subscribe((data: null) => {
       if (data != null) {
         this.sportList = this.dfService.sportEventWise(data, 0).reverse();
 

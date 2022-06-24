@@ -19,12 +19,12 @@ import { UserDataService } from 'src/app/services/user-data.service';
   styleUrls: ['./t20.component.scss']
 })
 export class T20Component implements OnInit {
-  [x: string]: any;
+  
   bodyElement: any;
   leftElement:any;
   mainElement:any;
   OpenBetForm!: FormGroup;
-  stakeSetting = [];
+  stakeSetting : any= [];
   favouriteEvents: any = [];
   match: any;
   eventBets = [];
@@ -67,8 +67,7 @@ export class T20Component implements OnInit {
     private sanitizer: DomSanitizer,
     private udService: UserDataService,) {
       this.route.paramMap.subscribe(params => {
-        // console.log(params);
-        // this.getFavouriteMarket();
+       
       })
     }
  
@@ -86,14 +85,14 @@ export class T20Component implements OnInit {
     this['epicFunction']();
     this['getMatchedUnmatchBets']();
 
-    this.casinoService.connectCasino("http://75.119.147.192:11001/", this.gameType);
+    this.casinoService.connectCasino("http://45.76.155.250:11001/", this.gameType);
     this['getCasinoData']();
     this['GetRecentGameResult']();
     this['sportWise']();
   }
  
   sportWise() {
-    this.sportSubscription = this.dfService.navigationSource.subscribe(data => {
+    this.sportSubscription = this.dfService.navigation$.subscribe(data => {
       if (data != null) {
         this.sportList = this.dfService.sportEventWise(data, 0).reverse();
 
@@ -170,30 +169,30 @@ export class T20Component implements OnInit {
     return this.OpenBetForm.controls;
   }
 
-  // getBetStakeSetting() {
+  getBetStakeSetting() {
 
-  //   this.dfService.betStakeSource.subscribe(data => {
+    this.dfService.betStake$.subscribe(data => {
 
-  //     if (data != null) {
-  //       if (data.stake1 != 0 && data.stake2 != 0) {
-  //         this.stakeSetting[0] = parseInt(data.stake1);
-  //         this.stakeSetting[1] = parseInt(data.stake2);
-  //         this.stakeSetting[2] = parseInt(data.stake3);
-  //         this.stakeSetting[3] = parseInt(data.stake4);
-  //         this.stakeSetting[4] = parseInt(data.stake5);
-  //         this.stakeSetting[5] = parseInt(data.stake6);
-  //         this.stakeSetting[6] = parseInt(data.stake7);
-  //         this.stakeSetting[7] = parseInt(data.stake8);
-  //         this.stakeSetting[8] = parseInt(data.stake9);
-  //         this.stakeSetting[9] = parseInt(data.stake10);
-  //         this.stakeSetting[10] = parseInt(data.stake11);
-  //         this.stakeSetting[11] = parseInt(data.stake12);
-  //       }
-  //       // console.log(this.stakeSetting);
-  //     }
+      if (data != null) {
+        if (data.stake1 != 0 && data.stake2 != 0) {
+          this.stakeSetting[0] = parseInt(data.stake1);
+          this.stakeSetting[1] = parseInt(data.stake2);
+          this.stakeSetting[2] = parseInt(data.stake3);
+          this.stakeSetting[3] = parseInt(data.stake4);
+          this.stakeSetting[4] = parseInt(data.stake5);
+          this.stakeSetting[5] = parseInt(data.stake6);
+          this.stakeSetting[6] = parseInt(data.stake7);
+          this.stakeSetting[7] = parseInt(data.stake8);
+          this.stakeSetting[8] = parseInt(data.stake9);
+          this.stakeSetting[9] = parseInt(data.stake10);
+          this.stakeSetting[10] = parseInt(data.stake11);
+          this.stakeSetting[11] = parseInt(data.stake12);
+        }
+        // console.log(this.stakeSetting);
+      }
 
-  //   })
-  // }
+    })
+  }
 
   FundExpo() {
     this.udService.FundExpo().subscribe(resp => {
@@ -206,7 +205,7 @@ export class T20Component implements OnInit {
   }
   getFavouriteMarket() {
 
-    this.favouriteSubscription = this.dfService.navigationSource.subscribe(data => {
+    this.favouriteSubscription = this.dfService.navigation$.subscribe(data => {
       // console.log(data)
       if (data != null) {
         // console.log(this.dfService.favouriteEventWise(data));
@@ -223,7 +222,7 @@ export class T20Component implements OnInit {
   getCasinoData() {
     let oldGameId = 0;
     this.casinoSubscription = this.casinoService.casinoSource.subscribe(data => {
-      // console.log(data,"casino");
+      console.log(data);
       if (data != null) {
         this.tpData = data.data.t1[0];
         if(this.tpData.autotime){
@@ -386,6 +385,185 @@ export class T20Component implements OnInit {
     this['calcProfit']();
   }
   
-  
+  // incOdds() {
+  //   if (!this.OpenBetForm.value.odds) {
+  //     this.OpenBetForm.controls['odds'].setValue(1.00);
+  //   }
+  //   if (parseFloat(this.OpenBetForm.value.odds) >= 1000) {
+  //     this.OpenBetForm.controls['odds'].setValue(1000);
+  //     this.calcProfit();
+  //     return false;
+  //   }
+  //   let odds = parseFloat(this.OpenBetForm.value.odds);
+  //   this.OpenBetForm.controls['odds'].setValue(this.oddsDecimal(odds + this.oddsDiffCalc(odds)));
+
+  //   this.calcProfit();
+  //   // this.calcExposure(bet);
+  // }
+
+  // decOdds() {
+  //   if (this.OpenBetForm.value.odds == "" || this.OpenBetForm.value.odds == null || parseFloat(this.OpenBetForm.value.odds) <= 1.01) {
+  //     this.OpenBetForm.controls['odds'].setValue(1.01);
+  //     this.calcProfit();
+  //     return false;
+  //   }
+  //   let odds = parseFloat(this.OpenBetForm.value.odds);
+  //   this.OpenBetForm.controls['odds'].setValue(this.oddsDecimal(odds - this.oddsDiffCalc(odds)));
+
+  //   this.calcProfit();
+  //   // this.calcExposure(bet);
+  // }
+
+  incStake() {
+    if (!this.OpenBetForm.value.stake) {
+      this.OpenBetForm.controls['stake'].setValue(0);
+    }
+
+    if (this.OpenBetForm.value.stake > -1) {
+      let stake = parseInt(this.OpenBetForm.value.stake);
+      this.OpenBetForm.controls['stake'].setValue(stake + this.stakeDiffCalc(stake));
+      this.calcProfit();
+    }
+  }
+
+  // decStake() {
+
+  //   if (this.OpenBetForm.value.stake <= 0) {
+  //     this.OpenBetForm.controls['stake'].setValue("");
+  //     return false;
+  //   }
+
+  //   if (!this.OpenBetForm.value.stake) {
+  //     this.OpenBetForm.controls['stake'].setValue(0);
+  //   }
+
+  //   if (this.OpenBetForm.value.stake > -1) {
+  //     let stake = parseInt(this.OpenBetForm.value.stake);
+  //     this.OpenBetForm.controls['stake'].setValue(stake - this.stakeDiffCalc(stake));
+  //     this.calcProfit();
+  //   }
+  // }
+
+  calcProfit() {
+    if (this.OpenBetForm.value.stake &&
+      this.OpenBetForm.value.odds &&
+      this.OpenBetForm.value.mtype == 'casino') {
+      if (this.OpenBetForm.value.backlay == "back") {
+        this.OpenBetForm.controls['profit'].setValue(
+          ((parseFloat(this.OpenBetForm.value.odds) - 1) * this.OpenBetForm.value.stake).toFixed(2));
+        this.OpenBetForm.controls['loss'].setValue(this.OpenBetForm.value.stake);
+      } else {
+        this.OpenBetForm.controls['loss'].setValue(
+          ((parseFloat(this.OpenBetForm.value.odds) - 1) * this.OpenBetForm.value.stake).toFixed(2));
+        this.OpenBetForm.controls['profit'].setValue(this.OpenBetForm.value.stake);
+      }
+
+    }
+
+
+    if (this.OpenBetForm.value.stake == null) {
+      this.OpenBetForm.controls['profit'].setValue(0);
+    }
+  }
+
+  oddsDecimal(value:any) {
+    return (value == null || value == '' || (parseFloat(value) > 19.5)) ? value : ((parseFloat(value) > 9.5) ? parseFloat(value).toFixed(1) : parseFloat(value).toFixed(2));
+  }
+
+  oddsDiffCalc(currentOdds:any) {
+    var diff;
+    if (currentOdds < 2) {
+      diff = 0.01
+    } else if (currentOdds < 3) {
+      diff = 0.02
+    } else if (currentOdds < 4) {
+      diff = 0.05
+    } else if (currentOdds < 6) {
+      diff = 0.10
+    } else if (currentOdds < 10) {
+      diff = 0.20
+    } else if (currentOdds < 20) {
+      diff = 0.50
+    } else if (currentOdds < 30) {
+      diff = 1.00
+    } else {
+      diff = 2.00
+    }
+    return diff
+  }
+
+  stakeDiffCalc(currentStake:any) {
+    var diff;
+    if (currentStake <= 50) {
+      diff = 5
+    } else if (currentStake <= 100) {
+      diff = 10
+    } else if (currentStake <= 1000) {
+      diff = 100
+    } else if (currentStake <= 10000) {
+      diff = 1000
+    } else if (currentStake <= 100000) {
+      diff = 10000
+    } else if (currentStake <= 1000000) {
+      diff = 100000
+    } else if (currentStake <= 10000000) {
+      diff = 1000000
+    } else if (currentStake <= 100000000) {
+      diff = 10000000
+    } else {
+      diff = 100000000
+    }
+    return diff
+  }
+
+  //#endregion  //CLOSE BET SLIP CALC
+
+
+  //#region
+  getDataByType(betType:any) {
+    this.betType = betType;
+  }
+  getMatchedUnmatchBets() {
+    // let betMatchId = matchId;
+    if (this.eventBetsSubscription) {
+      this.eventBetsSubscription.unsubscribe();
+    }
+    let allbets;
+    this.eventBetsSubscription = this.dfService.allMatchUnmatchBetsSource.subscribe(data => {
+      // console.log(data);
+
+      if (data != null) {
+        if (this.betType == 4) {
+          allbets = this.dfService.matchUnmatchBetsFormat(data._userTpBets[this.gameId]);
+          this.eventBets = allbets.matchWiseBets;
+          this.totalBets = allbets.totalBets;
+        }
+        // console.log(this.eventBets)
+      }
+    })
+  }
+
+  trackByBet(bet: any) {
+    return bet.id;
+  }
+
+  //#endregion
+
+  ngOnDestroy() {
+    (this.bodyElement as HTMLElement).classList.remove('clsbetshow');
+    (this.leftElement as HTMLElement).classList.remove('leftmenuhide');
+    (this.mainElement as HTMLElement).classList.remove('casino_main');
+    // this.dfService.RemoveFavourites();
+    this.casinoService.UnsuscribeCasino(this.gameType);
+    if (this.favouriteSubscription) {
+      this.favouriteSubscription.unsubscribe();
+    }
+    if (this.casinoSubscription) {
+      this.casinoSubscription.unsubscribe();
+    }
+    if (this.eventBetsSubscription) {
+      this.eventBetsSubscription.unsubscribe();
+    }
+  }
 
 }
