@@ -187,144 +187,18 @@ bdfg
 
 <!-- images -->
 
-<div class="dash_casino">
+
+ <div class="dash_casino" *ngFor="let sport of sportList;trackBy:trackBySport; let index = index">
+    <ng-container *ngIf="sport.isTeenpatti">
     <h2>live casino</h2>
-    <a routerLink="exchanges/teenpatti">
+    <div *ngFor="let data of sport.matches;trackBy:trackByEvent;let first=first">
+    <a routerLink="/exchanges/teenpatti" (click)="toggleFavourite(data)">
         <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/teenpatti.jpg">
+            <img class="img-fluid" img src="assets/images/dcasino/{{data.matchName}}.jpg">
             <div class="casinoname">Live Teenpatti</div>
         </div>
     </a>
-    <a routerLink="exchanges/t20">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/teenpatti.jpg">
-            <div class="casinoname">Teenpatti T20</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/muflis">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/teenpatti.jpg">
-            <div class="casinoname">Mulfis Teenpatti</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/meter">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/cmeter.jpg">
-            <div class="casinoname">casino meter</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/card">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/32cardsA.jpg">
-            <div class="casinoname">32 card casino</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/anderbahar">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/andar-bahar.jpg">
-            <div class="casinoname">Andar Bahar</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/updown">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/lucky7live.jpg">
-            <div class="casinoname">7 up &amp; down</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/oneday">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/dt.jpg">
-            <div class="casinoname">Dragon Tiger</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/poker">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/poker.jpeg">
-            <div class="casinoname">Poker</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/amar-akbar">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/aaa.jpeg">
-            <div class="casinoname">Amar Akbar Anthony</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/sicbo">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/sicbo.jpg">
-            <div class="casinoname">Sicbo</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/roulette">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/roulette.jpg">
-            <div class="casinoname">Roulette</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/teen-virtual">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/teenpatti_v.jpeg">
-            <div class="casinoname">Teenpatti One-Day (Virtual)</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/t20-virtual">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/teenpatti_v.jpeg">
-            <div class="casinoname">Teenpatti T20 (Virtual)</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/up-virtual">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/lucky7.jpg">
-            <div class="casinoname">7 Up &amp; Down (Virtual)</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/card-virtual">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/32cardsA_v.jpeg">
-            <div class="casinoname">32 Cards (Virtual)</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/ander-virtual">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/andar-bahar_v.jpeg">
-            <div class="casinoname">Andar Bahar (Virtual)</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/roulette-virtual">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/roulette_v.jpeg">
-            <div class="casinoname">Roulette (Virtual)</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/tiger-virtual">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/dt_v.jpeg">
-            <div class="casinoname">Dragon Tiger (Virtual)</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/poker-virtual">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/poker_v.jpeg">
-            <div class="casinoname">Poker (Virtual)</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/amar-akbar-virtual">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/aaa_v.jpeg">
-            <div class="casinoname">Amar Akbar Anthony (Virtual)</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/six-poker-virtual">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/sixpoker_v.jpeg">
-            <div class="casinoname">Six Player Poker (Virtual)</div>
-        </div>
-    </a>
-    <a routerLink="exchanges/six-poker-virtual">
-        <div class="d-inline-block casinoicons">
-            <img class="img-fluid" src="assets/images/hilow_v.png">
-            <div class="casinoname">Hi-Low (Virtual)</div>
-        </div>
-    </a>
+</div>
+  
+    </ng-container>
 </div>
