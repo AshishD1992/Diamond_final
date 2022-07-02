@@ -43,7 +43,7 @@ export class FancyService {
 
 
     this.fancyProxy.on("BroadcastSubscribedData", (fancy:any) => {
-      // console.log(fancy);
+      console.log(fancy);
       this.currentFancy.next(fancy);
     })
   }

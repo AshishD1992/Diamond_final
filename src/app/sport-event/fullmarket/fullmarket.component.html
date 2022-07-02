@@ -16,8 +16,8 @@
             <div class="col-md-8 mobile-sec ds-block-mobile listing_screen">
               <!---->
             </div>
-            <div class="col-md-8">
-              <h2 class="event-title"><span> Academic Mu Sofia vs. Bscu Mu Plovdiv </span><span>04/19/2022 11:30:00 AM
+            <div class="col-md-8" *ngFor=" let sport of favouriteEvents;trackBy:trackByEvent">
+              <h2 class="event-title"><span>{{sport.name}}</span><span>{{sport.startDate}}
                 </span></h2>
               <div id="scoreCard" class="multi-collapse">
                 <div class="col-12 px-0">
@@ -27,10 +27,11 @@
                 </div>
               </div>
               <!---->
+              <ng-container *ngFor="let market of sport.markets; trackBy:trackByMkt">
               <div class="row">
                 <div class="col-md-12">
                   <div>
-                    <h4 class="panel-title"> Match Odds
+                    <h4 class="panel-title"> {{market.name}}
                       <!---->
                       <!---->
                     </h4>
@@ -45,13 +46,14 @@
                         <div class="bhav_box bhavbocHideM"></div>
                       </div>
                     </div>
+                    <ng-container *ngFor="let runner of market.runners; trackBy:trackByRunner">
                     <div class="randerScore mainScore">
                       <div class="odds_rows">
                         <div class="events_odds">
                           <!---->
                           <div class="event-names">
                             <div class="horse-event">
-                              <div class="slogen-horce"><span class="team-horce">Sri Lanka</span></div>
+                              <div class="slogen-horce"><span class="team-horce">{{runner.runnerName}}</span></div>
                             </div>
                             <div>
                               <!---->
@@ -62,69 +64,32 @@
                           <!---->
                         </div>
                         <div class="odds_bhav">
-                          <div class="back_oddsbox backex bhav_box"><strong class="odds ng-binding">2.74</strong>
-                            <div class="size"><span class="ng-binding">8832.62</span></div>
+                          <div class="back_oddsbox backex bhav_box"><strong class="odds ng-binding">{{runner.back3}}</strong>
+                            <div class="size"><span class="ng-binding">{{runner.backSize3}}</span></div>
                           </div>
-                          <div class="back_oddsbox backex bhav_box"><strong class="odds ng-binding">2.76</strong>
-                            <div class="size"><span class="ng-binding">1007.42</span></div>
+                          <div class="back_oddsbox bhav_box"><strong class="odds ng-binding">{{runner.back2}}</strong>
+                            <div class="size"><span class="ng-binding">{{runner.backSize2}}</span></div>
                           </div>
-                          <div class="back_oddsbox bhav_box"><strong class="odds ng-binding">2.78</strong>
-                            <div class="size"><span class="ng-binding">1</span></div>
+                          <div class="back_oddsbox backex bhav_box"><strong class="odds ng-binding">{{runner.back1}}</strong>
+                            <div class="size"><span class="ng-binding">{{runner.backSize1}}</span></div>
                           </div>
-                          <div class="Lay_oddsbox bhav_box"><strong class="odds ng-binding">2.8</strong>
-                            <div class="size"><span class="ng-binding">84289.9</span></div>
+                          <div class="Lay_oddsbox bhav_box"><strong class="odds ng-binding">{{runner.lay1}}</strong>
+                            <div class="size"><span class="ng-binding">{{runner.laySize1}}</span></div>
                           </div>
-                          <div class="Lay_oddsbox bhav_box layex"><strong class="odds ng-binding">2.82</strong>
-                            <div class="size"><span class="ng-binding">27759.23</span></div>
+                          <div class="Lay_oddsbox bhav_box"><strong class="odds ng-binding">{{runner.lay2}}</strong>
+                            <div class="size"><span class="ng-binding">{{runner.laySize2}}</span></div>
                           </div>
-                          <div class="Lay_oddsbox bhav_box layex"><strong class="odds ng-binding">2.84</strong>
-                            <div class="size"><span class="ng-binding">41</span></div>
+                          <div class="Lay_oddsbox bhav_box layex"><strong class="odds ng-binding">{{runner.lay3}}</strong>
+                            <div class="size"><span class="ng-binding">{{runner.laySize3}}</span></div>
                           </div>
+                         
                           <!---->
                           <!---->
                         </div>
                       </div>
                     </div>
-                    <div class="randerScore mainScore">
-                      <div class="odds_rows">
-                        <div class="events_odds">
-                          <!---->
-                          <div class="event-names">
-                            <div class="horse-event">
-                              <div class="slogen-horce"><span class="team-horce">Australia</span></div>
-                            </div>
-                            <div>
-                              <!---->
-                              <!---->
-                            </div>
-                          </div>
-                          <!---->
-                          <!---->
-                        </div>
-                        <div class="odds_bhav">
-                          <div class="back_oddsbox backex bhav_box"><strong class="odds ng-binding">1.54</strong>
-                            <div class="size"><span class="ng-binding">185.68</span></div>
-                          </div>
-                          <div class="back_oddsbox backex bhav_box"><strong class="odds ng-binding">1.55</strong>
-                            <div class="size"><span class="ng-binding">50534.5</span></div>
-                          </div>
-                          <div class="back_oddsbox bhav_box"><strong class="odds ng-binding">1.56</strong>
-                            <div class="size"><span class="ng-binding">151259.14</span></div>
-                          </div>
-                          <div class="Lay_oddsbox bhav_box"><strong class="odds ng-binding">1.57</strong>
-                            <div class="size"><span class="ng-binding">15956.79</span></div>
-                          </div>
-                          <div class="Lay_oddsbox bhav_box layex"><strong class="odds ng-binding">1.58</strong>
-                            <div class="size"><span class="ng-binding">7626.8</span></div>
-                          </div>
-                          <div class="Lay_oddsbox bhav_box layex"><strong class="odds ng-binding">1.59</strong>
-                            <div class="size"><span class="ng-binding">22098.82</span></div>
-                          </div>
-                          <!---->
-                          <!---->
-                        </div>
-                      </div>
-                    </div>
+                  </ng-container>
+                
                     <!---->
                   </div>
                   <!---->
@@ -8355,6 +8320,7 @@
                 <!---->
                 <!---->
               </div>
+            </ng-container>
 
             </div>
           </div>

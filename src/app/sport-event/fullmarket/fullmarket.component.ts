@@ -30,7 +30,7 @@ export class FullmarketComponent implements OnInit, AfterViewInit {
   OpenBetForm!: FormGroup;
 
   accountInfo: any;
-  fancyHubAddress: string = "http://178.18.240.118:16511";
+  fancyHubAddress = "http://178.18.240.118:16511";
 
   stakeSetting:any = [];
   favouriteEvents: any = [];
