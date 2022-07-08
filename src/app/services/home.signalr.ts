@@ -9,7 +9,7 @@ import { SharedataService } from './sharedata.service';
 
   export class HomeSignalrServices{
 
-    private readonly dataHubAddress: string = 'http://173.249.21.26:16501';
+    private readonly dataHubAddress: string = 'http://207.180.220.254:12211';
   private readonly proxyToken: string = '1937-789-123';
 
   homeConnection: any;

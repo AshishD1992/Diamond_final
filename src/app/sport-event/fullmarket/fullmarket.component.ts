@@ -30,7 +30,7 @@ export class FullmarketComponent implements OnInit, AfterViewInit {
   OpenBetForm!: FormGroup;
 
   accountInfo: any;
-  fancyHubAddress = "http://178.18.240.118:16511";
+  fancyHubAddress = "http://173.249.21.26:16511";
 
   stakeSetting:any = [];
   favouriteEvents: any = [];
@@ -411,6 +411,7 @@ console.log(data);
       }
     })
   }
+
 
 
 
@@ -813,7 +814,7 @@ console.log(data);
 
   PlaceMOBet() {
 
-    this.betService.PlaceMOBet(this.OpenBetForm.value).subscribe((resp: { status: string; result: string | undefined; }) => {
+    this.betService.PlaceMOBet(this.OpenBetForm.value).subscribe(resp => {
 
       if (resp.status == "Success") {
         this.toastr.success(resp.result);
@@ -831,7 +832,7 @@ console.log(data);
         }
       }
       this.showLoader = false;
-    }, (err: { status: number; }) => {
+    }, err => {
       if (err.status == 401) {
         //this.toastr.error("Error Occured");
       }
@@ -974,13 +975,13 @@ console.log(data);
     })
   }
 
-  marketsNewExposure(bet: { stake: null; mktId: any; mtype: string; backlay: string; runnerName: any; profit: string | null; loss: string; rate: null; odds: null; bookId: any; }) {
-    _.forEach(this.favouriteEvents, (match: { markets: any; bookRates: any; }, matchIndex: any) => {
-      _.forEach(match.markets, (market: { [x: string]: null; pnl: any; id: any; }, mktIndex: any) => {
+  marketsNewExposure(bet: any) {
+    _.forEach(this.favouriteEvents, (match:any, matchIndex: any) => {
+      _.forEach(match.markets, (market: any, mktIndex: any) => {
         if (bet) {
           let newMktExposure = _.cloneDeep((market.pnl));
           if (bet.stake != null && market.id == bet.mktId && bet.mtype == 'market') {
-            _.forEach(newMktExposure, (runner: { Key: any; Value: string; }) => {
+            _.forEach(newMktExposure, (runner:any) => {
               if (bet.backlay == "back" && bet.runnerName == runner.Key) {
                 if (bet.profit != null) {
                   runner.Value = this.convertToFloat(parseFloat(runner.Value) + parseFloat(bet.profit));
@@ -1009,11 +1010,11 @@ console.log(data);
         }
 
       })
-      _.forEach(match.bookRates, (book: { [x: string]: null; pnl: any; id: any; }, bookIndex: any) => {
+      _.forEach(match.bookRates, (book:any) => {
         if (bet) {
           let newbookExposure = _.cloneDeep((book.pnl));
           if (bet.stake != null && book.id == bet.bookId && bet.mtype == 'book') {
-            _.forEach(newbookExposure, (runner: { Key: any; Value: string; }) => {
+            _.forEach(newbookExposure, (runner:any) => {
               if (bet.backlay == "back" && bet.runnerName == runner.Key) {
                 if (bet.profit != null) {
                   runner.Value = this.convertToFloat(parseFloat(runner.Value) + parseFloat(bet.profit));
@@ -1049,7 +1050,7 @@ console.log(data);
     return parseFloat(value).toFixed(2);
   }
 
-  getPnlValue(runner: { [x: string]: any; runnerName: undefined; name: any; }, Pnl: any) {
+  getPnlValue(runner:any,Pnl:any) {
     // console.log(runner,Pnl)
     if (runner.runnerName == undefined) {
       runner['runnerName'] = runner.name;
@@ -1065,13 +1066,13 @@ console.log(data);
     return pnl;
   }
 
-  getPnlClass(runner: { [x: string]: any; runnerName: undefined; name: any; }, Pnl: any) {
+  getPnlClass(runner:any,Pnl:any) {
     if (runner.runnerName == undefined) {
       runner['runnerName'] = runner.name;
     }
     let pnlClass = "black";
     if (Pnl) {
-      _.forEach(Pnl, (value: { Key: any; Value: number; }, index: any) => {
+      _.forEach(Pnl, (value:any, index: any) => {
         if (runner.runnerName == value.Key) {
           if (value.Value >= 0) {
             pnlClass = 'profit'
@@ -1085,29 +1086,29 @@ console.log(data);
     return pnlClass;
   }
 
-  trackByEvent(index: any, item: { bfId: any; }) {
+  trackByEvent(index: any, item: any) {
     return item.bfId;
   }
 
-  trackByMkt(index: any, item: { bfId: any; }) {
+  trackByMkt(index: any, item:any) {
     return item.bfId;
   }
-  trackBybookId(index: any, item: { id: any; }) {
+  trackBybookId(index: any, item:any) {
     return item.id;
   }
-  trackByRunner(index: any, item: { runnerName: any; }) {
+  trackByRunner(index: any, item:any) {
     return item.runnerName;
   }
-  trackByBookRunner(index: any, item: { name: any; }) {
+  trackByBookRunner(index: any, item: any) {
     return item.name;
   }
-  trackByFancy(index: any, item: { id: any; }) {
+  trackByFancy(index: any, item:any) {
     return item.id;
   }
 
-  toggleFavourite(event: { markets: any; id: any; bfId: any; }) {
+  toggleFavourite(event:any) {
     // _.forEach(this.favouriteEvents, (item, matchIndex) => {
-    _.forEach(event.markets, (item2: { bfId: any; }) => {
+    _.forEach(event.markets, (item2:any) => {
       this.mktService.UnsuscribeSingleMarket(item2.bfId);
     });
     this.fancyService.UnsuscribeSingleFancy(event.id);
