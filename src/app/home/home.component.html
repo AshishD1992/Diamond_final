@@ -63,7 +63,7 @@
                                         
                                         <a  routerLink="/sport-event/fullmarket" (click)="toggleFavourite(sport)" class="ng-star-inserted">
                                             <p> <span></span>
-                                                <b> {{sport.matchName}}/{{sport.matchDate}}</b>
+                                                <b> {{sport.matchName}} {{sport.startDate}}</b>
                                             </p>
                                         </a>
                                     </div>
@@ -195,7 +195,7 @@ bdfg
     <a routerLink="/exchanges/teenpatti" (click)="toggleFavourite(data)">
         <div class="d-inline-block casinoicons">
             <img class="img-fluid" img src="assets/images/dcasino/{{data.matchName}}.jpg">
-            <div class="casinoname">Live Teenpatti</div>
+            <div class="casinoname">{{data.matchName}}</div>
         </div>
     </a>
 </div>

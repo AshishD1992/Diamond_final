@@ -44,7 +44,7 @@ export class TeenpattiComponent implements OnInit {
   TabSelected: string = "1";
   isData: boolean = false;
   pnl = [];
-  gameType: number = 1;
+  gameType: number = 2;
   gameId!: number;
   tpData: any;
   tpMarket = [];
@@ -85,7 +85,7 @@ export class TeenpattiComponent implements OnInit {
     this['epicFunction']();
     this['getMatchedUnmatchBets']();
 
-    this.casinoService.connectCasino("http://45.76.155.250:11001/", this.gameType);
+    this.casinoService.connectCasino("http://45.76.155.250:11002/", this.gameType);
     this['getCasinoData']();
     this['GetRecentGameResult']();
     this['sportWise']();
@@ -199,30 +199,29 @@ export class TeenpattiComponent implements OnInit {
       this.fundInfo = resp.data;
     }, err => {
       if (err.status == 401) {
-        //this.toastr.error("Error Occured");
+        
       }
     })
   }
   getFavouriteMarket() {
 
     this.favouriteSubscription = this.dfService.navigation$.subscribe(data => {
-      // console.log(data)
+      
       if (data != null) {
-        // console.log(this.dfService.favouriteEventWise(data));
-        // if (this.favouriteEvents.length == 0) {
+        
         this.favouriteEvents = this.dfService.favouriteEventWise(data);
         this.match = this.favouriteEvents[0];
         if(!this.match){
           this.router.navigate(['/dashboard'])
         }
-        // }
+        
       }
     })
   } 
   getCasinoData() {
     let oldGameId = 0;
     this.casinoSubscription = this.casinoService.casinoSource.subscribe(data => {
-      // console.log(data);
+      console.log(data);
       if (data != null) {
         this.tpData = data.data.t1[0];
         if(this.tpData.autotime){
@@ -415,17 +414,17 @@ export class TeenpattiComponent implements OnInit {
   //   // this.calcExposure(bet);
   // }
 
-  incStake() {
-    if (!this.OpenBetForm.value.stake) {
-      this.OpenBetForm.controls['stake'].setValue(0);
-    }
+  // incStake() {
+  //   if (!this.OpenBetForm.value.stake) {
+  //     this.OpenBetForm.controls['stake'].setValue(0);
+  //   }
 
-    if (this.OpenBetForm.value.stake > -1) {
-      let stake = parseInt(this.OpenBetForm.value.stake);
-      this.OpenBetForm.controls['stake'].setValue(stake + this.stakeDiffCalc(stake));
-      this.calcProfit();
-    }
-  }
+  //   if (this.OpenBetForm.value.stake > -1) {
+  //     let stake = parseInt(this.OpenBetForm.value.stake);
+  //     this.OpenBetForm.controls['stake'].setValue(stake + this.stakeDiffCalc(stake));
+  //     this.calcProfit();
+  //   }
+  // }
 
   // decStake() {
 
