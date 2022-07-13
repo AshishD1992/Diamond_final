@@ -19,9 +19,6 @@ import { UserDataService } from 'src/app/services/user-data.service';
   styleUrls: ['./teenpatti.component.scss']
 })
 export class TeenpattiComponent implements OnInit {
-  bodyElement: any;
-  leftElement:any;
-  mainElement:any;
   OpenBetForm!: FormGroup;
   stakeSetting : any= [];
   favouriteEvents: any = [];
@@ -47,7 +44,7 @@ export class TeenpattiComponent implements OnInit {
   gameType: number = 2;
   gameId!: number;
   tpData: any;
-  tpMarket = [];
+  tpMarket: any= [];
   clock: any;
   results = [];
   sportList = [];
@@ -56,7 +53,7 @@ export class TeenpattiComponent implements OnInit {
   open: boolean = true;
    disabled: boolean = true;
   modalRef!: BsModalRef;
-   constructor(private modalService: BsModalService,private reportService: ReportService,
+   constructor(private modalService: BsModalService,
     private dfService: DataFormatService,
     private casinoService: CasinoSignalrService,
     private betService: BetsService,
@@ -68,29 +65,27 @@ export class TeenpattiComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private udService: UserDataService,) {
       this.route.paramMap.subscribe(params => {
-       
+
       })
     }
 
    openModal(template: TemplateRef<any>) {
       this.modalRef = this.modalService.show(template);
    }
-  
+
    ngOnInit(): void {
-    this.bodyElement = document.querySelector('body');
-    this.leftElement = document.querySelector('div.left-side-menu');
-    this.mainElement = document.querySelector('div.main_container');
+
     this['getFavouriteMarket']();
     this['getBetStakeSetting']();
     this['epicFunction']();
     this['getMatchedUnmatchBets']();
 
     this.casinoService.connectCasino("http://45.76.155.250:11002/", this.gameType);
-    this['getCasinoData']();
+    this.getCasinoData();
     this['GetRecentGameResult']();
     this['sportWise']();
   }
- 
+
   sportWise() {
     this.sportSubscription = this.dfService.navigation$.subscribe(data => {
       if (data != null) {
@@ -101,35 +96,18 @@ export class TeenpattiComponent implements OnInit {
     });
   }
 
-  toggleFavourite(event:any) {
 
-    this.dfService.ToggleFavourite(event.mtBfId, false);
-  }
   ngAfterViewInit() {
-    (this.bodyElement as HTMLElement).classList.add('clsbetshow');
-    (this.leftElement as HTMLElement).classList.add('leftmenuhide');
-    (this.mainElement as HTMLElement).classList.add('casino_main');
-
-    this.clock = (<any>$(".clock")).FlipClock(99, {
+       this.clock = (<any>$(".clock")).FlipClock(99, {
       clockFace: "Counter"
     });
   }
-  // openMobileBet() {
-  //   document.getElementById("mybet").style.width = "100%";
-  // }
 
-  // closeMobilebet() {
-  //   document.getElementById("mybet").style.width = "0";
-  // }
   epicFunction() {
     this.deviceInfo = this.deviceService.getDeviceInfo();
     const isMobile = this.deviceService.isMobile();
     const isTablet = this.deviceService.isTablet();
     const isDesktop = this.deviceService.isDesktop();
-    // console.log(this.deviceInfo);
-    // console.log(isMobile);  // returns if the device is a mobile device (android / iPhone / windows-phone etc)
-    // console.log(isTablet);  // returns if the device us a tablet (iPad etc)
-    // console.log(isDesktop); // returns if the app is running on a Desktop browser.
 
     if (isMobile) {
       this.context = "Mobile";
@@ -199,47 +177,45 @@ export class TeenpattiComponent implements OnInit {
       this.fundInfo = resp.data;
     }, err => {
       if (err.status == 401) {
-        
+
       }
     })
   }
   getFavouriteMarket() {
 
     this.favouriteSubscription = this.dfService.navigation$.subscribe(data => {
-      
+
       if (data != null) {
-        
+
         this.favouriteEvents = this.dfService.favouriteEventWise(data);
         this.match = this.favouriteEvents[0];
         if(!this.match){
-          this.router.navigate(['/dashboard'])
+          this.router.navigate(['/home'])
         }
-        
+
       }
     })
-  } 
+  }
   getCasinoData() {
-    let oldGameId = 0;
+    let oldGameId=0;
     this.casinoSubscription = this.casinoService.casinoSource.subscribe(data => {
-      console.log(data);
+      console.log(data,'casino');
       if (data != null) {
-        this.tpData = data.data.t1[0];
-        if(this.tpData.autotime){
-          this.clock.setValue(this.tpData.autotime);
-        }
-        this.tpMarket = data.data.t2;
-        console.log(this.tpMarket);
-        this.gameId = this.tpData.mid;
+        this.tpMarket = data.data.bf;
+        this.gameId = this.tpMarket[0].marketId;
+        this.clock.setValue(this.tpMarket[0].lasttime);
 
-        if (this.pnl.length == 0 || oldGameId != this.gameId) {
-          this['T20ExposureBook']();
-          this['GetRecentGameResult']();
+        if (this.pnl.length == 0 || oldGameId!=this.gameId) {
+          this.T20ExposureBook();
+          this.GetRecentGameResult();
           this.dfService.shareFunds(null);
-          oldGameId = this.gameId;
+          oldGameId=this.gameId;
+
         }
       }
     })
   }
+
   trackBySid(index:any, item:any) {
     return item.sid;
   }
@@ -384,7 +360,7 @@ export class TeenpattiComponent implements OnInit {
   update() {
     this['calcProfit']();
   }
-  
+
   // incOdds() {
   //   if (!this.OpenBetForm.value.odds) {
   //     this.OpenBetForm.controls['odds'].setValue(1.00);
@@ -550,10 +526,7 @@ export class TeenpattiComponent implements OnInit {
   //#endregion
 
   ngOnDestroy() {
-    (this.bodyElement as HTMLElement).classList.remove('clsbetshow');
-    (this.leftElement as HTMLElement).classList.remove('leftmenuhide');
-    (this.mainElement as HTMLElement).classList.remove('casino_main');
-    // this.dfService.RemoveFavourites();
+
     this.casinoService.UnsuscribeCasino(this.gameType);
     if (this.favouriteSubscription) {
       this.favouriteSubscription.unsubscribe();

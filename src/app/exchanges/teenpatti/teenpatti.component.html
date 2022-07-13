@@ -9,7 +9,7 @@
         <label class="tab" id="two-tab" for="two"><span> PLACED BETS(0) </span></label>
         <label class="tab" id="three-tab" for="three"> <a href="javascript:void(0)"
                 (click)="openModal(templaterule)">rules</a>
-            <span class="d-block"> Round ID: <span>23719700</span></span>
+            <span class="d-block"> Round ID: <span>{{tpMarket[0]?.marketId}}</span></span>
         </label>
     </div>
     <div class="panels">
@@ -23,25 +23,25 @@
                             </span>
                             <span class="casino-video-rid"><span class="round-id">
                                     Round ID:
-                                    <span>{{tpData?.mid}}</span>
+                                    <span>{{tpMarket[0]?.marketId}}</span>
                                 </span>
 
                             </span>
                         </div>
                         <iframe src="http://mumbai.marketsarket.in/teen20/" width="100%"
                             style="border: 0px;border-radius: 1px;border: 4px solid #69a209;"></iframe>
-                        <div class="casino-video-cards hide-cards">
+                        <div class="casino-video-cards hide-cards" *ngIf="tpMarket.length>0">
                             <div class="casino-cards-shuffle"> || </div>
                             <div class="casino-video-cards-container">
                                 <div>
-                                    <img src="https://dzm0kbaskt4pv.cloudfront.net/img/cards/{{tpData?.C1}}.png">
-                                    <img src="https://dzm0kbaskt4pv.cloudfront.net/img/cards/{{tpData?.C2}}.png">
-                                    <img src="https://dzm0kbaskt4pv.cloudfront.net/img/cards/{{tpData?.C3}}.png">
+                                  <img src="https://dzm0kbaskt4pv.cloudfront.net/img/cards/{{tpMarket[0]?.C1}}.png">
+                                  <img src="https://dzm0kbaskt4pv.cloudfront.net/img/cards/{{tpMarket[0]?.C2}}.png">
+                                  <img src="https://dzm0kbaskt4pv.cloudfront.net/img/cards/{{tpMarket[0]?.C3}}.png">
                                 </div>
                                 <div>
-                                    <img src="https://dzm0kbaskt4pv.cloudfront.net/img/cards/{{tpData?.C4}}.png">
-                                    <img src="https://dzm0kbaskt4pv.cloudfront.net/img/cards/{{tpData?.C5}}.png">
-                                    <img src="https://dzm0kbaskt4pv.cloudfront.net/img/cards/{{tpData?.C6}}.png">
+                                  <img src="https://dzm0kbaskt4pv.cloudfront.net/img/cards/{{tpMarket[1]?.C1}}.png">
+                                  <img src="https://dzm0kbaskt4pv.cloudfront.net/img/cards/{{tpMarket[1]?.C2}}.png">
+                                  <img src="https://dzm0kbaskt4pv.cloudfront.net/img/cards/{{tpMarket[1]?.C3}}.png">
                                 </div>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                     <div class="base-timer">
                         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="base-timer__svg">
                             <g class="base-timer__circle"><circle cx="50" cy="50" r="45" class="base-timer__path-elapsed">
-    
+
                             </circle><path stroke-dasharray="225 283" d="M 50, 50 m -45, 0 a 45,45 0 1,0 90,0 a 45,45 0 1,0 -90,0" class="base-timer__path-remaining green"></path>
                         </g>
                     </svg>
@@ -58,12 +58,12 @@
             </div>
         </div> -->
                     </div>
-                  
+
                 </div>
                 <div class="casino-section">
                     <p class="cs_title">Pair Plus:</p>
                     <div class="casinobetplace">
-                        <div class="casino_odds">
+                        <div class="casino_odds" *ngIf="match">
                             <div class="row">
                                 <div class="col-md-7 col-5">
                                     <div class="c-min-max">Min:100 Max:300000</div>
@@ -74,34 +74,21 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-7 col-5 pl-2"><span>Player A+</span>
+                            <div class="row" *ngFor="let runner of tpMarket; trackBy:trackBySid;let ri=index">
+                                <div class="col-md-7 col-5 pl-2"><span>{{runner.nation}}</span>
                                     <div class="down-text"><b></b></div>
                                 </div>
                                 <div class="col-md-5 col-7">
                                     <div class="btn-group c_odds_value">
-                                        <button class="back"><span>2 <span>300000</span></span></button>
-                                        <button class="lay"><span>-</span></button>
-                                        <span class="suspended"><i class="fa fa-lock"></i></span>
+                                        <button class="back"><span>{{runner.b1}} <span>{{runner.bs1}}</span></span></button>
+                                        <button class="lay"><span>{{runner.l1}}<span>{{runner.ls1}}</span></span></button>
+                                        <span class="" [ngClass]="{'suspended':runner.gstatus!='ACTIVE'}"><i class="fa fa-lock"></i></span>
                                     </div>
                                     <div></div>
                                     <div></div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-7 col-5 pl-2"><span>Player B+</span>
-                                    <div class="down-text"><b></b></div>
-                                </div>
-                                <div class="col-md-5 col-7">
-                                    <div class="btn-group c_odds_value">
-                                        <button class="back"><span>2 <span>300000</span></span></button>
-                                        <button class="lay"><span>-</span></button>
-                                        <span class="suspended"><i class="fa fa-lock"></i></span>
-                                    </div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -120,22 +107,22 @@
     </div>
 </div>
 <div class="panel" id="two-panel">
-    <div _ngcontent-hhm-c83="" class="p-1">
-        <table _ngcontent-hhm-c83="" class="table">
-            <thead _ngcontent-hhm-c83="">
-                <tr _ngcontent-hhm-c83="">
-                    <td _ngcontent-hhm-c83="">Matched Bet </td>
-                    <td _ngcontent-hhm-c83="">Odds</td>
-                    <td _ngcontent-hhm-c83="">Stake</td>
+    <div class="p-1">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Matched Bet </td>
+                    <td>Odds</td>
+                    <td>Stake</td>
                 </tr>
             </thead>
-            <!---->
-            <tbody _ngcontent-hhm-c83="">
-                <tr _ngcontent-hhm-c83="">
-                    <td _ngcontent-hhm-c83="" colspan="3" class="text-center"> No records Found</td>
+           
+            <tbody>
+                <tr>
+                    <td colspan="3" class="text-center"> No records Found</td>
                 </tr>
             </tbody>
-            <!---->
+           
         </table>
     </div>
 </div>
@@ -171,7 +158,7 @@
                     </div>
                 </div>
             </div>
-           
+
 </div>
     <div class="casino-detail"><div class="casino-section">
         <p class="cs_title">Match odds:</p><div class="casinobetplace"><div class="casino_odds"><div class="row"><div class="col-md-7 col-5"><div class="c-min-max">Min:100 Max:300000</div></div><div class="col-md-5 col-7"><div class="btn-group c_odds_title"><button class="back">back</button><button class="lay">lay</button></div></div></div><div class="row"><div class="col-md-7 col-5 pl-2"><span>Player A</span><div class="down-text"><b></b></div></div><div class="col-md-5 col-7"><div class="btn-group c_odds_value"><button class="back"><span>2.92 <span>300000</span></span></button><button class="lay"><span>3.02 <span>300000</span></span></button></div><div></div><div></div></div></div><div class="row"><div class="col-md-7 col-5 pl-2"><span>Player B</span><div class="down-text"><b></b></div></div><div class="col-md-5 col-7"><div class="btn-group c_odds_value"><button class="back"><span>1.49 <span>300000</span></span></button><button class="lay"><span>1.53 <span>300000</span></span></button></div><div></div><div></div></div></div></div></div></div><div class="casino-section"><p class="cs_title">Pair Plus:</p><div class="casinobetplace"><div class="casino_odds"><div class="row"><div class="col-md-7 col-5"><div class="c-min-max">Min:100 Max:300000</div></div><div class="col-md-5 col-7"><div class="btn-group c_odds_title"><button class="back">back</button><button class="lay">lay</button></div></div></div><div class="row"><div class="col-md-7 col-5 pl-2"><span>Player A+</span><div class="down-text"><b></b></div></div><div class="col-md-5 col-7"><div class="btn-group c_odds_value"><button class="back"><span>2 <span>300000</span></span></button><button class="lay"><span>-</span></button><span class="suspended"><i class="fa fa-lock"></i></span></div><div></div><div></div></div></div><div class="row"><div class="col-md-7 col-5 pl-2"><span>Player B+</span><div class="down-text"><b></b></div></div><div class="col-md-5 col-7"><div class="btn-group c_odds_value"><button class="back"><span>2 <span>300000</span></span></button><button class="lay"><span>-</span></button><span class="suspended"><i class="fa fa-lock"></i></span></div><div></div><div></div>
