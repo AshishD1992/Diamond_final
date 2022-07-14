@@ -1,6 +1,7 @@
 <div  class="header-bottom">
     <div  class="row mx-lg-0">
         <div  class="col-md-12">
+           
             <nav  class="navbar navbar-expand-md btco-hover-menu">
                 <button  type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span  class="navbar-toggler-icon">
 
@@ -13,75 +14,26 @@
                             <b >Home</b>
                         </a>
                     </li>
-                    <li  class="nav-item">
-                       <a routerLink="cricket">
-                            <b >Cricket</b>
+                    <ng-container *ngFor="let sport of sportList;trackBy:trackBySport; let index = index">
+                    <li  class="nav-item" *ngIf="sport.isTeenpatti==false">
+                       <a routerLink="{{sport.name}}">
+                            <b >{{sport.name}}</b>
                         </a>
                     </li>
-                    <li  class="nav-item">
-                        <a routerLink="football" routerlinkactive="router-link-exact-active router-link-active">
-                            <b  >Football</b>
+                    </ng-container>
+                    <ng-container *ngFor="let sport of sportList;trackBy:trackBySport; let index = index">
+                    <div  *ngFor="let data of sport.matches;trackBy:trackByEvent;let first=first">
+                    <li  class="nav-item active" *ngIf="sport.isTeenpatti==true">
+                        <a routerLink="/exchanges/{{data.matchName}}" (click)="toggleFavourite(data)" class="router-link-exact-active router-link-active">
+                            <b >{{data.matchName}}</b>
                         </a>
                     </li>
-                    <li  class="nav-item">
-                        <a routerLink="tennis" routerlinkactive="router-link-exact-active router-link-active">
-                            <b >Tennis</b>
-                        </a>
-                    </li>
-                    <li  class="nav-item">
-                        <a routerLink="election" routerlinkactive="router-link-exact-active router-link-active">
-                            <b >Election</b>
-                        </a>
-                    </li>
-                  
-                    <li  class="nav-item">
-                        <a href="exchanges/teenpatti" routerLink="exchanges/teenpatti" routerlinkactive="router-link-exact-active router-link-active">
-                            <b >Teenpatti</b>
-                        </a>
-                    </li>
-                    <!-- <li  class="nav-item">
-                        <a href="exchanges/roulette" routerLink="exchanges/roulette" routerlinkactive="router-link-exact-active router-link-active">
-                            <b >Roulette</b>
-                        </a>
-                    </li> -->
-                    <li  class="nav-item">
-                        <a  href="exchanges/updown" routerLink="exchanges/updown" routerlinkactive="router-link-exact-active router-link-active">
-                            <b >7 Up &amp; Down</b>
-                        </a>
-                    </li>
-                    <!-- <li  class="nav-item">
-                        <a  href="exchanges/card" routerLink="exchanges/card" routerlinkactive="router-link-exact-active router-link-active">
-                            <b >32 Card Casino</b>
-                        </a>
-                    </li> -->
-                    <!-- <li  class="nav-item">
-                        <a href="exchanges/sicbo" routerLink="exchanges/sicbo" routerlinkactive="router-link-exact-active router-link-active">
-                            <b >Sicbo</b>
-                        </a>
-                    </li> -->
-                    <!-- <li class="nav-item">
-                        <a href="exchanges/poker" routerLink="exchanges/poker" routerlinkactive="router-link-exact-active router-link-active">
-                            <b>Poker</b>
-                        </a>
-                    </li> -->
-                    <!-- <li class="nav-item">
-                        <a  href="exchanges/anderbahar" routerLink="exchanges/anderbahar" routerlinkactive="router-link-exact-active router-link-active">
-                            <b>Andar Bahar</b>
-                        </a>
-                    </li> -->
-                    <li class="nav-item">
-                        <a href="exchanges/oneday" routerLink="exchanges/oneday" routerlinkactive="router-link-exact-active router-link-active">
-                            <b>One-Day Dragon Tiger</b>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="exchanges/dragon" routerLink="exchanges/dragon" routerlinkactive="router-link-exact-active router-link-active">
-                            <b>20-20 Dragon Tiger-2</b>
-                        </a>
-                    </li>
+                </div>
+            </ng-container>
                 </ul>
     </div>
 </nav>
+
 
 <h2  class="mobie-title d-sm-none d-block">ELECTION 2022</h2>
 </div>

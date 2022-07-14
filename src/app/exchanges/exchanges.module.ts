@@ -32,17 +32,17 @@ const routes: Routes = [
     component:  ExchangesComponent,
     pathMatch: 'prefix',
     children: [
-  {path:'teenpatti', component: TeenpattiComponent,},
+  {path:'1 Day Teenpatti', component: TeenpattiComponent,},
  
   {path:'updown', component:  UpdownComponent,},
  
 
  
 
-  {path:'oneday', component: OnedayComponent ,},
+  {path:'1 Day Dragon tiger', component: OnedayComponent ,},
  
-  {path:'t20', component: T20Component ,},
-   {path:'dragon', component: DragonTigerComponent ,},
+  {path:'20-20 Teenpatti', component: T20Component ,},
+   {path:'20-20 Dragon tiger2', component: DragonTigerComponent ,},
   
  
   

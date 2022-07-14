@@ -29,9 +29,9 @@ const routes: Routes = [
     {path:'set-button-value', component: SetButtonValueComponent,},
     {path:'change-password', component: ChangePasswordComponent,},
     {path:'change-password', component: ChangePasswordComponent,},
-    {path:'cricket', component:  CricketComponent,},
-    {path:'football', component:  FootballComponent ,},
-    {path:'tennis', component:  TennisComponent,},
+    {path:'Cricket', component:  CricketComponent,},
+    {path:'Soccer', component:  FootballComponent ,},
+    {path:'Tennis', component:  TennisComponent,},
     {path:'election', component:  ElectionComponent ,},
     {
       path: 'sports',

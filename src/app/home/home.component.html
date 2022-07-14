@@ -192,7 +192,7 @@ bdfg
     <ng-container *ngIf="sport.isTeenpatti">
     <h2>live casino</h2>
     <div *ngFor="let data of sport.matches;trackBy:trackByEvent;let first=first">
-    <a routerLink="/exchanges/teenpatti" (click)="toggleFavourite(data)">
+    <a routerLink="/exchanges/{{data.matchName}}" (click)="toggleFavourite(data)">
         <div class="d-inline-block casinoicons">
             <img class="img-fluid" img src="assets/images/dcasino/{{data.matchName}}.jpg">
             <div class="casinoname">{{data.matchName}}</div>
