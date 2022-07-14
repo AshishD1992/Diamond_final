@@ -1,0 +1,157 @@
+@import "src/change.scss";
+
+.c_odds_title .back, .c_odds_value .back {
+    border-right: 1px solid #fff;
+    font-size: 13px;
+}
+.row > * {
+    flex-shrink: 0;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * -0.5);
+    margin-top: var(--bs-gutter-y);
+}
+@media (min-width: 768px){
+.col-md-9 {
+    flex: 0 0 auto;
+   height: 40px;
+}
+}
+.c_odds_title, .c_odds_value {
+    height: 40px;;
+}
+.main_pair .back {
+    margin-left: 21px;
+    color: #fff !important;
+    background-image: linear-gradient(to right, var(--primary), var(--secondary)) !important;
+    width: 85% !important;
+    border-radius: 4px !important;
+    box-shadow: 0 2px 2px 0 #00000024, 0 3px 1px -2px #0000001f, 0 1px 5px 0 #0003 !important;
+    border: 0 !important;
+    padding: 4px 3px !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    position: relative;
+}
+.main_pair span {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+    text-align: center;
+}
+
+.text-uppercase.suspended {
+    line-height: unset;
+}
+
+.text-uppercase {
+    text-transform: uppercase!important;
+}
+
+.btn-theme {
+    color: #FFB80C;
+    background-image: linear-gradient(to right,#101212,#2c3e50)!important;
+    width: 100%!important;
+    border-radius: 4px!important;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.12),0 1px 5px 0 rgba(0,0,0,.2)!important;
+    border: 0!important;
+    padding: 8px 10px!important;
+    cursor: pointer!important;
+    font-size: 16px!important;
+    /* position: relative; */
+}
+
+.suspended {
+    background: rgba(30, 63, 90, 0.1);
+    width: 50px;
+    text-align: center;
+    font-weight: bolder;
+    position: relative;
+    /* line-height: 35px; */
+    height: 37px;
+}
+.col-4, .col-6, .col-8 {
+    padding-right: 6px;
+    padding-left: 0px;
+}
+.aaa-content.m-b-10 {
+    background-color: #eee;
+}
+
+.aaa-content {
+    background-color: #fff;
+    padding: 15px;
+}
+.row.row5 {
+    margin-left: -5px;
+    margin-right: -5px;
+}
+.row.row5>[class*=col-] {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+p {
+    margin-bottom: 2px;
+    display: block;
+}
+.win, .to-win {
+    color: #508d0e;
+    margin: 0 5px 0 0;
+}
+.aaa-content .card-image img {
+    width: 30px;
+}
+.col-2{
+    width: auto;
+}
+.aaa-content.m-b-10 {
+    background-color: #eee;
+}
+
+.aaa-content {
+    background-color: #fff;
+    padding: 15px;
+}
+.col, .col-1, .col-10, .col-11,  .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9 {
+    position: relative;
+    width: 31%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+
+.col-6 {
+    flex: 1;
+    /* flex: 0 0 50%; */
+    max-width: 50%;
+}
+.card-image {
+    display: inline-block;
+}
+
+.m-r-5 {
+    margin-right: 5px;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+.suspended:after {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    right: 0;
+    background-color: rgba(0, 0, 0, .6);
+    color: white;
+    text-transform: uppercase;
+    font-family: "font awesome 5 free";
+    content: "🔒";
+    font-weight: 900;
+    font-size: 18px;
+    top: 0;
+}

@@ -19,11 +19,12 @@ import { T20Component } from './t20/t20.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 import { BetSlipCasinoComponent } from './bet-slip-casino/bet-slip-casino.component';
-import { MyBetCasinoComponent } from './my-bet-casino/my-bet-casino.component';
+
 import { ModalComponent } from './modal/modal.component';
 import { SharedModule } from '../shared.module';
 
 import {ExchangesComponent } from './exchanges.component';
+import { DragonTigerComponent } from './dragon-tiger/dragon-tiger.component';
   
 const routes: Routes = [
   {
@@ -41,7 +42,7 @@ const routes: Routes = [
   {path:'oneday', component: OnedayComponent ,},
  
   {path:'t20', component: T20Component ,},
-   {path:'t20', component: T20Component ,},
+   {path:'dragon', component: DragonTigerComponent ,},
   
  
   
@@ -69,10 +70,11 @@ const routes: Routes = [
     
 
     BetSlipCasinoComponent,
-    MyBetCasinoComponent,
+   
     ModalComponent,
  
-    ExchangesComponent
+    ExchangesComponent,
+       DragonTigerComponent
   
   ],
   imports: [
