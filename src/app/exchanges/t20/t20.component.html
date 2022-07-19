@@ -3,72 +3,128 @@
     <input class="radio" id="two" name="group" type="radio">
     <input class="radio" id="three" name="group" type="radio">
     <div class="tabs">
-    <label class="tab" id="one-tab" for="one"><span >GAME</span></label>
-    <label class="tab" id="two-tab" for="two"><span > PLACED BETS(0) </span></label>
-    <label class="tab" id="three-tab" for="three"> <a href="javascript:void(0)" (click)="openModal(templaterule)">rules</a>
-        <span class="card-header-title">
-            Round ID:
-            <span>{{tpData?.mid}}</span>
-          </span>
-          <span class="float-right">
-
-            Bet Limit: <span>100</span>
-             to <span>50000</span>
-          </span>
-  </label>
-      </div>
+        <label class="tab" id="one-tab" for="one"><span>GAME</span></label>
+        <label class="tab" id="two-tab" for="two"><span> PLACED BETS(0) </span></label>
+        <label class="tab" id="three-tab" for="three"> <a href="javascript:void(0)"
+                (click)="openModal(templaterule)">rules</a>
+                <span class="d-block"> Round ID: <span>{{tpMarket[0]?.marketId}}</span></span>
+            
+        </label>
+    </div>
     <div class="panels">
-    <div class="panel" id="one-panel">
-        <div  id="element" class="casino-container"><div  class="casino-table teenpatti2024">
-            <div  class="casino-video"><div  class="casino-video-title"><span  class="casino-name">Teenpatti T20 <small >
-                <a href="javascript:void(0)" (click)="openModal(templaterule)">rules</a>
-            </small></span>
-            <div class="game-heading" *ngIf="context!='Mobile'">
-                <span class="card-header-title">
-                  Round ID:
-                  <span>{{tpData?.mid}}</span>
-                </span>
-                <span class="float-right">
+        <div class="panel" id="one-panel">
+            <div id="element" class="casino-container">
+                <div class="casino-table teenpatti2024">
+                    <div class="casino-video">
+                        <div class="casino-video-title"><span class="casino-name">Teenpatti T20 <small>
+                                    <a href="javascript:void(0)" (click)="openModal(templaterule)">rules</a>
+                                </small></span>
+                                <span class="casino-video-rid"><span class="round-id">
+                                    Round ID:
+                                    <span>{{tpMarket[0]?.marketId}}</span>
+                                </span>
 
-                  Bet Limit: <span>100</span>
-                   to <span>50000</span>
-                </span>
-            </div>
-        </div>
-          
-            <div  class="casino-video-cards hide-cards">
-                <div  class="casino-cards-shuffle"> || </div>
-                <div  class="casino-video-cards-container"><div >
-                    <span ><img  src="/assets/img/cards/D6.png"></span><span >
-                <img  src="/assets/img/cards/H1.png"></span><span >
-                    <img  src="/assets/img/cards/H7.png"></span></div>
-                    <div ><span ><img  src="/assets/img/cards/C2.png"></span>
-                        <span><img  src="/assets/img/cards/D7.png"></span>
-                        <span><img  src="/assets/img/cards/S12.png"></span>
-                    </div></div>
+                            </span>
+                        </div>
+                        <div class="video-container">
+                            <iframe src="http://mumbai.marketsarket.in/teen20/" width="100%" style="border: 0px;border-radius: 1px;border: 4px solid #69a209;"></iframe>
+                            <div class="clock clock2digit flip-clock-wrapper"></div>
+                            <div class="video-overlay" *ngIf="tpData">
+                                <div class="videoCards">
+                                    <div>
+                                        <h3 class="text-white">PLAYER A</h3>
+                                        <div>
+                                            <img src="https://dzm0kbaskt4pv.cloudfront.net/img/cards/{{tpData?.C1}}.png">
+                                            <img src="https://dzm0kbaskt4pv.cloudfront.net/img/cards/{{tpData?.C2}}.png">
+                                            <img src="https://dzm0kbaskt4pv.cloudfront.net/img/cards/{{tpData?.C3}}.png">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-white">PLAYER B</h3>
+                                        <div>
+                                            <img src="https://dzm0kbaskt4pv.cloudfront.net/img/cards/{{tpData?.C4}}.png">
+                                            <img src="https://dzm0kbaskt4pv.cloudfront.net/img/cards/{{tpData?.C5}}.png">
+                                            <img src="https://dzm0kbaskt4pv.cloudfront.net/img/cards/{{tpData?.C6}}.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                          
+                        <!-- <div class="casino-video-cards hide-cards">
+                            <div class="casino-cards-shuffle"> || </div>
+                            <div class="casino-video-cards-container">
+                                <div>
+                                    <span><img src="/assets/img/cards/D6.png"></span><span>
+                                        <img src="/assets/img/cards/H1.png"></span><span>
+                                        <img src="/assets/img/cards/H7.png"></span>
+                                </div>
+                                <div><span><img src="/assets/img/cards/C2.png"></span>
+                                    <span><img src="/assets/img/cards/D7.png"></span>
+                                    <span><img src="/assets/img/cards/S12.png"></span>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- <div class="casino-timer d-none-mobile">
+                            <div class="base-timer">
+                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="base-timer__svg">
+                                    <g class="base-timer__circle">
+                                        <circle cx="50" cy="50" r="45" class="base-timer__path-elapsed"></circle>
+                                        <path stroke-dasharray="225 283"
+                                            d="M 50, 50 m -45, 0 a 45,45 0 1,0 90,0 a 45,45 0 1,0 -90,0"
+                                            class="base-timer__path-remaining green"></path>
+                                    </g>
+                                </svg><span class="base-timer__label red"><span>2</span></span>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="casino-detail" >
+                        <div class="casino-section">
+                            <div class="casinobetplace sportrow-{{match.bfId}} matchOpenBox_{{match.id}}">
+                                <div class="casino_odds" *ngIf="match">
+                                    <div class="row">
+                                        <div class="col-md-7 col-5">
+                                            <div class="c-min-max"> Min:100 Max:100000</div>
+                                        </div>
+                                        <div class="col-md-5 col-7 bulk_actions ">
+                                            <div class="btn-group c_odds_title"><button class="back">back</button></div>
+                                        </div>
+                                    </div>
+                                    <div class="row" *ngFor="let runner of tpMarket; trackBy:trackBySid;let ri=index">
+                                        <div class="col-md-7 col-5 pl-2"><span>{{runner[0].nation}}</span></div>
+                                        <div class="col-md-5 col-7">
+                                            <div class="btn-group c_odds_value">
+                                                <button class="back"><span>{{runner[1].rate}}</span></button>
+                                                <button class="back"><span>{{runner[1].nation}}<span></span></span></button>
+                                                <span class="" [ngClass]="{'suspended':runner.gstatus!='ACTIVE'}"><i class="fa fa-lock"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" *ngFor="let runner of tpMarket; trackBy:trackBySid;let ri=index">
+                                        <div class="col-md-7 col-5 pl-2"><span>{{runner[2].nation}}</span></div>
+                                        <div class="col-md-5 col-7">
+                                            <div class="btn-group c_odds_value"><button
+                                                    class="back"><span>{{runner[3].rate}}</span></button>
+                                                    <button class="back"><span>{{runner[3].nation}}<span></span></span></button>
+                                                    <span class="suspended"><i class="fa fa-lock"></i></span></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="casino-lastResult">
+                        <h2>Last Results </h2>
+                        <div class="clr-sec" (click)="openModal(template)"><span
+                                class="resultText playerb">B</span><span class="resultText playerb">B</span><span
+                                class="resultText playerb">B</span><span class="resultText playerb">B</span><span
+                                class="resultText playerb">B</span><span class="resultText playerb">B</span><span
+                                class="resultText playera">A</span><span class="resultText playerb">B</span><span
+                                class="resultText playerb">B</span></div>
+                    </div>
                 </div>
-                <div  class="casino-timer d-none-mobile">
-                    <div  class="base-timer">
-                        <svg  viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="base-timer__svg">
-                            <g  class="base-timer__circle">
-                                <circle  cx="50" cy="50" r="45" class="base-timer__path-elapsed"></circle>
-                                <path  stroke-dasharray="225 283" d="M 50, 50 m -45, 0 a 45,45 0 1,0 90,0 a 45,45 0 1,0 -90,0" class="base-timer__path-remaining green"></path></g></svg><span  class="base-timer__label red"><span >2</span></span></div></div></div>
-                                <div  class="casino-detail"><div  class="casino-section"><div  class="casinobetplace"><div  class="casino_odds">
-                                    <div  class="row"><div  class="col-md-7 col-5"><div  class="c-min-max"> Min:100 Max:100000</div></div>
-                                <div  class="col-md-5 col-7 bulk_actions "
-                                >
-                    <div  class="btn-group c_odds_title"><button  class="back">back</button></div>
-                </div></div>
-                <div  class="row" >
-                    <div  class="col-md-7 col-5 pl-2" ><span >Player A</span></div>
-                    <div  class="col-md-5 col-7"><div  class="btn-group c_odds_value">
-                        <button  class="back"><span >-</span></button>
-                        <button  class="back"><span >Pair plus A<span >0</span></span></button>
-                        <span  class="suspended"><i  class="fa fa-lock"></i></span></div></div></div>
-                        <div  class="row"><div  class="col-md-7 col-5 pl-2"><span >Player B</span></div><div  class="col-md-5 col-7"><div  class="btn-group c_odds_value"><button  class="back"><span >-</span></button><button  class="back"><span >Pair plus B<span >0</span></span></button><span  class="suspended"><i  class="fa fa-lock"></i></span></div></div></div>
-                      
-                    </div></div></div></div>
-        <div  class="casino-lastResult"><h2 >Last Results </h2><div  class="clr-sec" (click)="openModal(template)"><span  class="resultText playerb">B</span><span  class="resultText playerb">B</span><span  class="resultText playerb">B</span><span  class="resultText playerb">B</span><span  class="resultText playerb">B</span><span  class="resultText playerb">B</span><span  class="resultText playera">A</span><span  class="resultText playerb">B</span><span  class="resultText playerb">B</span></div></div></div></div>
+            </div>
         </div>
 
         <div class="panel" id="two-panel">
@@ -83,67 +139,157 @@
                     </thead>
                     <tbody>
                         <tr>
-                    <td colspan="3" class="text-center"> No records Found</td>
-                </tr></tbody>></table></div>
-          </div>
+                            <td colspan="3" class="text-center"> No records Found</td>
+                        </tr>
+                    </tbody>>
+                </table>
+            </div>
+        </div>
 
-          <div class="panel" id="three-panel">
+        <div class="panel" id="three-panel">
             <!-- <span class="casino-name">One-Day Teenpatti <small>
                 <a href="javascript:void(0)" (click)="openModal(templaterule)">rules</a></small>
             </span> -->
-          </div>
-          </div>
         </div>
-        
-        
-        
-        
+    </div>
+</div>
 
 
 
 
 
-<div  id="right-sidebar-id" class="right-sidebar casino-right-sidebar teen2sidebar">
+
+
+
+
+<div id="right-sidebar-id" class="right-sidebar casino-right-sidebar teen2sidebar">
     <!-- <app-bet-slip-casino  _nghost-lqq-c85=""> -->
-        <div  class="bets-section" style="position: relative;"><h2 >Place Bet</h2></div>
+    <div class="bets-section" style="position: relative;">
+        <h2>Place Bet</h2>
+    </div>
     <!-- </app-bet-slip-casino> -->
     <!-- <app-my-bets-casino  _nghost-lqq-c83=""> -->
-        <div  class="bets-section"><h2>My Bet</h2><div  class="p-1"><table  class="table"><thead ><tr ><td >Matched Bet </td><td >Odds</td><td >Stake</td></tr></thead><tbody ><tr ><td  colspan="3" class="text-center"> No records Found</td></tr></tbody></table></div></div>
+    <div class="bets-section">
+        <h2>My Bet</h2>
+        <div class="p-1">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Matched Bet </td>
+                        <td>Odds</td>
+                        <td>Stake</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="3" class="text-center"> No records Found</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
     <!-- </app-my-bets-casino> -->
-    <div  class="bets-section border rules-t20"><h2  class="mt-0">Rules</h2><table  class="table table-bordered rules-table"><tbody ><tr  class="text-center"><th  colspan="2"><b >Pair Plus</b></th></tr><tr ><td  width="60%">Pair (Double)</td><td >1 To 1</td></tr><tr ><td  width="60%">Flush (Color)</td><td >1 To 4</td></tr><tr ><td  width="60%">Straight (Rown)</td><td >1 To 6</td></tr><tr ><td  width="60%">Trio (Teen)</td><td >1 To 35</td></tr><tr ><td  width="60%">Straight Flush (Pakki Rown)</td><td >1 To 45</td></tr></tbody></table></div></div>
+    <div class="bets-section border rules-t20">
+        <h2 class="mt-0">Rules</h2>
+        <table class="table table-bordered rules-table">
+            <tbody>
+                <tr class="text-center">
+                    <th colspan="2"><b>Pair Plus</b></th>
+                </tr>
+                <tr>
+                    <td width="60%">Pair (Double)</td>
+                    <td>1 To 1</td>
+                </tr>
+                <tr>
+                    <td width="60%">Flush (Color)</td>
+                    <td>1 To 4</td>
+                </tr>
+                <tr>
+                    <td width="60%">Straight (Rown)</td>
+                    <td>1 To 6</td>
+                </tr>
+                <tr>
+                    <td width="60%">Trio (Teen)</td>
+                    <td>1 To 35</td>
+                </tr>
+                <tr>
+                    <td width="60%">Straight Flush (Pakki Rown)</td>
+                    <td>1 To 45</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 
-   
 
 
-      <ng-template #template>
-        <div class="modal-content">
-         <div class="modal-header">
+
+<ng-template #template>
+    <div class="modal-content">
+        <div class="modal-header">
             <h4 class="modal-title pull-left">Teenpatti T20</h4>
             <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-               <span aria-hidden="true">×</span>
+                <span aria-hidden="true">×</span>
             </button>
-         </div>
-         <div class="modal-body">
-            
-            <div><div class="casino-result-round"><div>
-                <b>Round-Id:</b> 22152801</div><div><b>Match Time:</b> 16/03/22 06:39:41</div></div>
-                <div class="row row5"><div class="col-12"><div class="casino-result-content"><div class="casino-result-content-item text-center"><div class="casino-result-cards"><div class="d-inline-block"><h4>Player A</h4><div class="casino-result-cards-item">
-                    <img  src="assets/images/card/D4.png"></div><div class="casino-result-cards-item">
-                        <img  src="assets/images/card/S3.png"></div><div class="casino-result-cards-item">
-                            <img src="assets/images/card/D3.png"></div></div></div></div><div class="casino-result-content-item text-center"><div class="casino-result-cards"><div class="d-inline-block"><h4>Player B</h4><div class="casino-result-cards-item">
-                                <img src="assets/images/card/C6.png"></div><div class="casino-result-cards-item">
-                                    <img src="assets/images/card/S2.png"></div><div class="casino-result-cards-item">
-                                        <img src="assets/images/card/H6.png"></div>
-                                        <div class="winner-icon"><i class="fas fa-trophy"></i></div></div></div></div></div></div></div></div>
-         </div>
         </div>
-      </ng-template>
+        <div class="modal-body">
+
+            <div>
+                <div class="casino-result-round">
+                    <div>
+                        <b>Round-Id:</b> 22152801
+                    </div>
+                    <div><b>Match Time:</b> 16/03/22 06:39:41</div>
+                </div>
+                <div class="row row5">
+                    <div class="col-12">
+                        <div class="casino-result-content">
+                            <div class="casino-result-content-item text-center">
+                                <div class="casino-result-cards">
+                                    <div class="d-inline-block">
+                                        <h4>Player A</h4>
+                                        <div class="casino-result-cards-item">
+                                            <img src="assets/images/card/D4.png">
+                                        </div>
+                                        <div class="casino-result-cards-item">
+                                            <img src="assets/images/card/S3.png">
+                                        </div>
+                                        <div class="casino-result-cards-item">
+                                            <img src="assets/images/card/D3.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="casino-result-content-item text-center">
+                                <div class="casino-result-cards">
+                                    <div class="d-inline-block">
+                                        <h4>Player B</h4>
+                                        <div class="casino-result-cards-item">
+                                            <img src="assets/images/card/C6.png">
+                                        </div>
+                                        <div class="casino-result-cards-item">
+                                            <img src="assets/images/card/S2.png">
+                                        </div>
+                                        <div class="casino-result-cards-item">
+                                            <img src="assets/images/card/H6.png">
+                                        </div>
+                                        <div class="winner-icon"><i class="fas fa-trophy"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
 
 
- <!------ Rules----- -->
- <ng-template #templaterule>
-    
+<!------ Rules----- -->
+<ng-template #templaterule>
+
     <app-modal></app-modal>
-     
-   </ng-template>
+
+</ng-template>

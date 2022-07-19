@@ -20,9 +20,6 @@ import { UserDataService } from 'src/app/services/user-data.service';
 })
 export class T20Component implements OnInit {
   
-  bodyElement: any;
-  leftElement:any;
-  mainElement:any;
   OpenBetForm!: FormGroup;
   stakeSetting : any= [];
   favouriteEvents: any = [];
@@ -48,12 +45,14 @@ export class T20Component implements OnInit {
   gameType: number = 1;
   gameId!: number;
   tpData: any;
-  tpMarket = [];
+  tpMarket: any= [];
   clock: any;
   results = [];
   sportList = [];
   sportSubscription!: Subscription;
   fundInfo: any;
+  open: boolean = true;
+   disabled: boolean = true;
   modalRef!: BsModalRef;
    constructor(private modalService: BsModalService,private reportService: ReportService,
     private dfService: DataFormatService,
@@ -77,9 +76,9 @@ export class T20Component implements OnInit {
    }
 
    ngOnInit(): void {
-    this.bodyElement = document.querySelector('body');
-    this.leftElement = document.querySelector('div.left-side-menu');
-    this.mainElement = document.querySelector('div.main_container');
+    // this.bodyElement = document.querySelector('body');
+    // this.leftElement = document.querySelector('div.left-side-menu');
+    // this.mainElement = document.querySelector('div.main_container');
     this['getFavouriteMarket']();
     this['getBetStakeSetting']();
     this['epicFunction']();
@@ -106,9 +105,9 @@ export class T20Component implements OnInit {
     this.dfService.ToggleFavourite(event.mtBfId, false);
   }
   ngAfterViewInit() {
-    (this.bodyElement as HTMLElement).classList.add('clsbetshow');
-    (this.leftElement as HTMLElement).classList.add('leftmenuhide');
-    (this.mainElement as HTMLElement).classList.add('casino_main');
+    // (this.bodyElement as HTMLElement).classList.add('clsbetshow');
+    // (this.leftElement as HTMLElement).classList.add('leftmenuhide');
+    // (this.mainElement as HTMLElement).classList.add('casino_main');
 
     this.clock = (<any>$(".clock")).FlipClock(99, {
       clockFace: "Counter"
@@ -222,18 +221,19 @@ export class T20Component implements OnInit {
   getCasinoData() {
     let oldGameId = 0;
     this.casinoSubscription = this.casinoService.casinoSource.subscribe(data => {
-      console.log(data);
+      console.log(data,"casino");
       if (data != null) {
         this.tpData = data.data.t1[0];
+        this.tpMarket = data.data.t2;
+        this.gameId = this.tpData.mid;
         if(this.tpData.autotime){
           this.clock.setValue(this.tpData.autotime);
         }
-        this.tpMarket = data.data.t2;
-        this.gameId = this.tpData.mid;
+      
 
         if (this.pnl.length == 0 || oldGameId != this.gameId) {
-          this['T20ExposureBook']();
-          this['GetRecentGameResult']();
+          this.T20ExposureBook();
+          this.GetRecentGameResult();
           this.dfService.shareFunds(null);
           oldGameId = this.gameId;
         }
@@ -550,9 +550,9 @@ export class T20Component implements OnInit {
   //#endregion
 
   ngOnDestroy() {
-    (this.bodyElement as HTMLElement).classList.remove('clsbetshow');
-    (this.leftElement as HTMLElement).classList.remove('leftmenuhide');
-    (this.mainElement as HTMLElement).classList.remove('casino_main');
+    // (this.bodyElement as HTMLElement).classList.remove('clsbetshow');
+    // (this.leftElement as HTMLElement).classList.remove('leftmenuhide');
+    // (this.mainElement as HTMLElement).classList.remove('casino_main');
     // this.dfService.RemoveFavourites();
     this.casinoService.UnsuscribeCasino(this.gameType);
     if (this.favouriteSubscription) {
