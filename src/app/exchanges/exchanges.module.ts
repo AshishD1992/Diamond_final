@@ -34,7 +34,7 @@ const routes: Routes = [
     children: [
   {path:'1 Day Teenpatti', component: TeenpattiComponent,},
  
-  {path:'updown', component:  UpdownComponent,},
+  {path:'Lucky 7', component:  UpdownComponent,},
  
 
  
